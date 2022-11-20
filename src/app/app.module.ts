@@ -10,7 +10,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
 import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { HeaderComponent } from './layout/components/header/header.component';
-
+import {BreadcrumbModule} from 'xng-breadcrumb';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +26,7 @@ import { HeaderComponent } from './layout/components/header/header.component';
     HttpClientModule,
     ReactiveFormsModule,
     AngularMaterialModule,
+    BreadcrumbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

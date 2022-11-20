@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ProjectsRoutingModule } from './projects-routing.module';
 import { ProjectsComponent } from './projects.component';
-
+import { BreadcrumbModule } from 'xng-breadcrumb';
+import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -11,7 +12,9 @@ import { ProjectsComponent } from './projects.component';
   ],
   imports: [
     CommonModule,
-    ProjectsRoutingModule
+    ProjectsRoutingModule,
+    BreadcrumbModule,
+    AngularMaterialModule
   ]
 })
 export class ProjectsModule { }

@@ -5,11 +5,11 @@ import { LayoutComponent } from './layout/layout.component';
 const routes: Routes = [
   {
     path: "",
-    redirectTo: "/portfolio/init-page",
+    redirectTo: "/page",
     pathMatch: "full"
   },
   {
-    path: "portfolio",
+    path: "",
     component: LayoutComponent,
     children: [
       {
@@ -20,7 +20,7 @@ const routes: Routes = [
   },
   {
     path: "**",
-    redirectTo: "/portfolio/init-page"
+    redirectTo: "/page"
   }
 ];
 

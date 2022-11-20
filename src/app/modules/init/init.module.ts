@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { InitRoutingModule } from './init-routing.module';
 import { InitComponent } from './init.component';
+import { BreadcrumbModule } from 'xng-breadcrumb';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { InitComponent } from './init.component';
   ],
   imports: [
     CommonModule,
-    InitRoutingModule
+    InitRoutingModule,
+    BreadcrumbModule,
   ]
 })
 export class InitModule { }

@@ -44,6 +44,8 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
+import { BreadcrumbModule } from 'xng-breadcrumb';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -93,6 +95,8 @@ import {OverlayModule} from '@angular/cdk/overlay';
     OverlayModule,
     PortalModule,
     ScrollingModule,
+
+    BreadcrumbModule
   ],
 })
 export class AngularMaterialModule { }
