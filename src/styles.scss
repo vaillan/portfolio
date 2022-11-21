@@ -1,7 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue Jost", sans-serif;
+}
 
 .porfolio-spacer {
   flex: 1 1 auto;
@@ -43,9 +50,10 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 ::ng-deep .mat-nav-list .is-active {
-  background-color: rgb(204, 204, 204)!important;
-  border-left     : 8px solid rgb(139, 137, 133);
-  width           : calc(100% - 8px)!important;;
+  background-color: rgb(204, 204, 204) !important;
+  border-left: 8px solid rgb(139, 137, 133);
+  width: calc(100% - 8px) !important;
+  ;
 }
 
 ::ng-deep .mat-list-base {
@@ -60,26 +68,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
  * App main styles
  */
 .sidebar-container {
-  display       : flex;
+  display: flex;
   flex-direction: column;
-  position      : absolute;
-  top           : 0;
-  bottom        : 0;
-  left          : 0;
-  right         : 0;
-  width : 100%;
-  height : 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .sidebar-is-mobile .sidebar-toolbar {
   position: fixed;
   /* Make sure the toolbar will stay on top of the content as it scrolls past. */
-  z-index : 2;
+  z-index: 2;
   width: 100%;
 }
 
-.loader-container{
-  height:3px
+.loader-container {
+  height: 3px
 }
 
 h1.sidebar-app-name {
@@ -117,4 +125,67 @@ h1.sidebar-app-name {
 
 ::ng-deep .mat-form-field {
   width: 100%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+}
+
+.breadcrumb-none {
+  padding: 8px 16px;
+  display: inline-block;
+}
+
+.img-background {
+  background-image: url('assets/img/i-1.png');
+  background-size: contain;
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
+
+.box-img {
+  display: block;
+  width: 100%;
+  height: 500px;
+}
+
+/**
+ *xng-breadcrumb
+ */
+::ng-deep .xng-breadcrumb-root {
+  padding: 8px 16px;
+  display: inline-block;
+  border-radius: 5px;
+  background-color: rgb(211 215 233);
+}
+
+::ng-deep .xng-breadcrumb-separator {
+  padding: 0 4px;
+}
+
+::ng-deep .xng-breadcrumb-trail {
+  margin: 0px;
+}
+
+::ng-deep .black-content {
+  .xng-breadcrumb-root {
+    background-color: rgb(39 41 61);
+  }
+
+  .xng-breadcrumb-trail {
+    color: rgb(82 95 127) !important;
+  }
+
+  .mat-chip.mat-standard-chip {
+    color: rgb(255 255 255 / 50%);
+    background-color: rgb(25 31 49);
+  }
 }

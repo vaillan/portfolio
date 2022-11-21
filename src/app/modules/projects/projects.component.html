@@ -1,8 +1,12 @@
-<xng-breadcrumb [separator]="iconTemplate">
-  <ng-container *xngBreadcrumbItem="let breadcrumb">
-    <ng-container>{{ breadcrumb }}</ng-container>
-  </ng-container>
-</xng-breadcrumb>
-<ng-template #iconTemplate>
-  <mat-icon>arrow_right</mat-icon>
-</ng-template>
+<div class="grid">
+  <div class="col">
+    <xng-breadcrumb [separator]="iconTemplate">
+      <ng-container *xngBreadcrumbItem="let breadcrumb">
+        <ng-container>{{ breadcrumb }}</ng-container>
+      </ng-container>
+    </xng-breadcrumb>
+    <ng-template #iconTemplate>
+      <mat-icon>arrow_right</mat-icon>
+    </ng-template>
+  </div>
+</div>
