@@ -11,12 +11,14 @@ import { LayoutComponent } from './layout/layout.component';
 import { FooterComponent } from './layout/components/footer/footer.component';
 import { HeaderComponent } from './layout/components/header/header.component';
 import {BreadcrumbModule} from 'xng-breadcrumb';
+import { MenuComponent } from './layout/components/menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    MenuComponent,
   ],
   imports: [
     BrowserModule,

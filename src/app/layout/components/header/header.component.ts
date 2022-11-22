@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import {MatMenuModule} from '@angular/material/menu';
+import { Component, HostBinding, Inject, Input } from '@angular/core';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +7,13 @@ import {MatMenuModule} from '@angular/material/menu';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Input() sidenav:any;
+  @Input() sidenav: any;
   title = 'angular-theme';
-  appId = 'theme1';
+  constructor(private themeService: ThemeService) { }
 
-  switchTheme(appId: string) {
-    this.appId = appId;
+  ngOnInit() { }
+
+  onThemeChange(e:boolean) {
+    this.themeService.changeColorTheme(e);
   }
 }

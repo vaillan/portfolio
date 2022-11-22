@@ -5,8 +5,7 @@ import { LayoutRoutingModule } from './layout-routing.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     LayoutRoutingModule,

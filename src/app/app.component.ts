@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding, SimpleChanges } from '@angular/core';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,16 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'portfolio';
+  isDark:any = false;
+  @HostBinding('class')
+  get themeMode() {
+    return this.isDark ? 'theme-dark' : 'theme-light';
+  }
+
+  constructor(private themeService: ThemeService) {
+    this.themeService.currentColorTheme.subscribe(mode => {
+      this.isDark = !this.isDark? mode :false;
+    });
+  }
+
 }
