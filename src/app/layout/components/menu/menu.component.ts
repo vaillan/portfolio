@@ -17,7 +17,6 @@ export class MenuComponent {
     this.themeService.currentColorTheme.subscribe(mode => {
       this.isDark = mode;
       this.icon = !this.isDark? "wb_sunny" : "mode_night";
-      console.log(this.icon, mode);
     });
   }
 

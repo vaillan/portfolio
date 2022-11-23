@@ -12,6 +12,13 @@ import { FooterComponent } from './layout/components/footer/footer.component';
 import { HeaderComponent } from './layout/components/header/header.component';
 import {BreadcrumbModule} from 'xng-breadcrumb';
 import { MenuComponent } from './layout/components/menu/menu.component';
+import { NavigationComponent } from './layout/components/navigation/navigation.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +26,7 @@ import { MenuComponent } from './layout/components/menu/menu.component';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,7 +36,13 @@ import { MenuComponent } from './layout/components/menu/menu.component';
     HttpClientModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

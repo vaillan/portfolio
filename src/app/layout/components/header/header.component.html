@@ -1,18 +1,25 @@
 <mat-toolbar color="primary">
-  <button mat-icon-button class="example-icon" (click)="sidenav.toggle()" aria-label="Example icon-button with menu icon">
-    <mat-icon>menu</mat-icon>
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle()"
+    *ngIf="isHandset$ | async">
+    <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
   </button>
-  <span>My App</span>
+  <button
+    type="button"
+    aria-label="Toggle sidenav"
+    mat-icon-button
+    (click)="drawer.toggle(); fullScreen();"
+    *ngIf="isLarge$ | async">
+    <mat-icon>{{icon}}</mat-icon>
+  </button>
+  &nbsp;
+  <span>portfolio</span>
   <span class="porfolio-spacer"></span>
   <div class="">
     <app-menu (switchMode)="onThemeChange($event)"></app-menu>
-    <!-- <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>format_color_fill</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button value='theme1' mat-menu-item (click)="selectDarkTheme()">Theme 1</button>
-      <button value='theme2' mat-menu-item>Theme 2</button>
-    </mat-menu> -->
   </div>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
