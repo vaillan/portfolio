@@ -8,6 +8,7 @@ const routes: Routes = [
     component: InitComponent,
     data: {
       breadcrumb: 'Init page',
+      globe: true
     }
   }
 ];
