@@ -20,21 +20,26 @@ export class InitComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    const globeContainer: any = document.querySelector('#globeViz');
+    globeContainer.classList.add("globe-background");
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, this.with / this.height, 0.1, 1000);
-    const renderer = new THREE.WebGLRenderer({ antialias: true });
-    renderer.setSize(this.with, this.height);
+    const camera = new THREE.PerspectiveCamera(75, globeContainer.offsetWidth / globeContainer.offsetHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+      canvas: document.querySelector('canvas')
+    });
+    renderer.setSize(globeContainer.offsetWidth, globeContainer.offsetHeight);
 
-    const color = new THREE.Color("rgb(255, 255, 255)");
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setClearColor(color, 0.1);
+    renderer.setPixelRatio(globeContainer.devicePixelRatio);
+    renderer.setClearColor(0x000000, 0);
 
     const globe: any = document.getElementById("globeViz");
     globe.appendChild(renderer.domElement);
 
     //create a sphere
     const geometry = new THREE.SphereGeometry(5, 50, 50);
-    const texture = new THREE.TextureLoader().load('assets/img/globe.jpg');
+    const texture = new THREE.TextureLoader().load('assets/img/earth2k.jpg');
     const material = new THREE.ShaderMaterial({
       vertexShader: vertexShader,
       fragmentShader: fragmentShader,
@@ -85,9 +90,8 @@ export class InitComponent implements OnInit {
     animate();
 
     window.addEventListener('mousemove', (e) => {
-      mouse.x = (e.clientX / this.with) * 2 - 1;
-      mouse.y = - (e.clientY / this.height) * 2 + 1;
+      mouse.x = (e.clientX / globeContainer.offsetWidth) * 2 - 1;
+      mouse.y = - (e.clientY / globeContainer.offsetHeight) * 2 + 1;
     });
   }
 }
-
