@@ -13,6 +13,10 @@ const routes: Routes = [
         path: 'projects',
         loadChildren: () => import("../modules/projects/projects.module").then(m => m.ProjectsModule)
       },
+      {
+        path: 'about',
+        loadChildren: () => import("../modules/portfolio/portfolio.module").then(m => m.PortfolioModule)
+      }
     ],
     data: {
       breadcrumb: 'Init page',

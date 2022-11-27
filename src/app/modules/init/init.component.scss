@@ -2,44 +2,9 @@ h3 {
   font-family: Jost, sans-serif !important
 }
 
-.intro-portfolio {
-  font-size: 15px;
-}
-
-.intro-portfolio-w {
-  font-size: 3.5rem;
-  font-weight: 700;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-bottom: 8px;
-}
-
-.text-gradient {
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: rgb(0 0 0 / 0%);
-  position: relative;
-  z-index: 1;
-}
-
-.text-gradient.name {
-  background-image: linear-gradient(310deg, rgb(121 40 202), rgb(255 0 128));
-}
-
-.name {
-  color: rgb(203 12 159) !important;
-}
 
 ::ng-deep .mat-typography h3 {
   font: 400 16px/53px Roboto, sans-serif;
-}
-
-.globe-background {
-  background-color: transparent !important;
-  height: 500px;
-  width: 100%;
 }
 
 .section-header {

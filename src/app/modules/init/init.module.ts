@@ -5,6 +5,7 @@ import { InitRoutingModule } from './init-routing.module';
 import { InitComponent } from './init.component';
 import { BreadcrumbModule } from 'xng-breadcrumb';
 import { AngularMaterialModule } from 'src/app/angular-material/angular-material.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { AngularMaterialModule } from 'src/app/angular-material/angular-material
     CommonModule,
     InitRoutingModule,
     BreadcrumbModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    SharedModule
   ]
 })
 export class InitModule { }
