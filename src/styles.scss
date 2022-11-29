@@ -162,7 +162,7 @@ h1.sidebar-app-name {
 }
 
 .mat-drawer {
-  width: 250px;
+  width: 250px !important;
 }
 
 .router-container {
@@ -211,6 +211,13 @@ h1.sidebar-app-name {
   background-repeat: no-repeat;
 }
 
+.img-background-3 {
+  background-image: url('assets/img/i-6.png');
+  background-size: contain;
+  background-position: center;
+  object-fit: cover;
+  background-repeat: no-repeat;
+}
 
 .box-img {
   display: block;
