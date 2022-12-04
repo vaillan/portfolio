@@ -1,8 +1,10 @@
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
+@use "sass:map";
 @use '@angular/material' as mat;
 @use '../src/assets/scss/palette' as customPalette;
+@use '../src//assets/scss/custom-style' as my;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -26,7 +28,7 @@ $portfolio-theme-light: mat.define-light-theme((
     primary: $portfolio-primary,
     accent: $portfolio-accent,
     warn: $portfolio-warn,
-  )
+  ),
 ));
 
 // $portfolio-theme-dark: mat.define-dark-theme((
@@ -39,11 +41,45 @@ $portfolio-theme-light: mat.define-light-theme((
 
 $portfolio-theme-dark: mat.define-dark-theme((
   color: (
-    primary: mat.define-palette(mat.$cyan-palette),
+    // primary: mat.define-palette(mat.$cyan-palette),
+    primary: mat.define-palette(customPalette.$crimson-palette, 500, 50, 300),
     accent: mat.define-palette(customPalette.$gainsboro-palette, 300, 100, 500),
     warn: mat.define-palette(customPalette.$crimson-palette, 700),
-  )
+  ),
+  typography: mat.define-typography-config(),
+  density: 0,
 ));
+
+@debug $portfolio-theme-dark;
+
+// Write over background and foreground with my versions.
+$portfolio-theme-dark: map.set(
+  $portfolio-theme-dark,
+  color,
+  background,
+  my.$dark-background
+);
+
+$portfolio-theme-dark: map.set(
+  $portfolio-theme-dark,
+  color,
+  foreground,
+  my.$dark-foreground
+);
+
+// Change the repeated ones after color just in case
+$portfolio-theme-dark: map.set(
+  $portfolio-theme-dark,
+  background,
+  my.$dark-background
+);
+
+$portfolio-theme-dark: map.set(
+  $portfolio-theme-dark,
+  foreground,
+  my.$dark-foreground
+);
+
 
 /* You can add global styles to this file, and also import other style files */
 
