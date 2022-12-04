@@ -29,3 +29,16 @@
 //     background-color: rgb(25 31 49);
 //   }
 // }
+@use '@angular/material' as mat;
+@use '../../../assets/scss/palette' as customPalette;
+
+::ng-deep .theme-dark {
+  .xng-breadcrumb-item {
+    color: map_get(customPalette.$gainsboro-palette, 50) !important;
+  }
+
+  .xng-breadcrumb-trail {
+    color: map_get(customPalette.$gainsboro-palette, 300) !important;
+  }
+
+}

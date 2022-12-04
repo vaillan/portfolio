@@ -31,14 +31,6 @@ $portfolio-theme-light: mat.define-light-theme((
   ),
 ));
 
-// $portfolio-theme-dark: mat.define-dark-theme((
-//   color: (
-//     primary: mat.define-palette(mat.$pink-palette),
-//     accent: mat.define-palette(mat.$blue-grey-palette),
-//     warn: $portfolio-warn,
-//   )
-// ));
-
 $portfolio-theme-dark: mat.define-dark-theme((
   color: (
     // primary: mat.define-palette(mat.$cyan-palette),
@@ -84,6 +76,7 @@ $portfolio-theme-dark: map.set(
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
+
 h3 {
   font-family: Jost, sans-serif !important
 }
