@@ -1,9 +1,9 @@
 <app-breadcrumb></app-breadcrumb>
-<div class="grid">
+<section class="grid" @query>
   <div class="col-6_sm-12">
     <div class="grid">
       <div class="col-12_sm-12">
-        <h3 class="intro-portfolio-w text-gradient c-1">LET'S GET STARTED!</h3>
+        <h3 *ngIf="show" class="intro-portfolio-w text-gradient c-1">LET'S GET STARTED!</h3>
       </div>
     </div>
     <br />
@@ -48,19 +48,19 @@
       </div>
     </div>
   </div>
-  <div class="col-6_sm-12 img-background-2 box-img">
+  <div class="col-6_sm-12 img-background-2 box-img tx-left">
   </div>
-</div>
+</section>
 
 <br/>
 
-<div class="grid">
-  <div class="col-6_sm-12 img-background-3 box-img">
+<section class="grid" @query>
+  <div class="col-6_sm-12 img-background-3 box-img tx-right">
   </div>
   <div class="col-6_sm-12">
     <div class="grid">
       <div class="col-12_sm-12">
-        <h3 class="intro-portfolio-w text-gradient c-1">TRUSTING ON ME!</h3>
+        <h3 *ngIf="show" class="intro-portfolio-w text-gradient c-1">TRUSTING ON ME!</h3>
       </div>
       <div class="col-12_sm-12">
         <mat-chip-listbox aria-label="Dog selection">
@@ -92,4 +92,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>
