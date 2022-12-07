@@ -67,7 +67,7 @@ $light-background: (
   background: map_get(customPalette.$gainsboro-palette, A100),
   hover:      map_get(customPalette.$crimson-palette, 600), // TODO(kara): check style with Material Design UX
   card:       map_get(customPalette.$gainsboro-palette, A400),
-  dialog:     map_get(customPalette.$gainsboro-palette, A200),
+  dialog:     map_get(customPalette.$gainsboro-palette, A400),
   disabled-button: rgba(black, 0.12),
   raised-button: white,
   focused-button: $dark-focused,
