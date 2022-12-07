@@ -2,6 +2,8 @@
 @use '@angular/material' as mat;
 @use '../scss/palette' as customPalette;
 
+$dark-focused: rgba(black, 0.12);
+
 // Background palette for dark themes.
 $dark-background: (
   status-bar: black,
@@ -35,4 +37,43 @@ $dark-foreground: (
   text: white,
   slider-off: rgba(white, 0.3),
   slider-off-active: rgba(white, 0.3),
+);
+
+$dark-dividers: mat.define-palette(customPalette.$gainsboro-palette, 700);
+$dark-disabled-text: mat.define-palette(customPalette.$gainsboro-palette, 500);
+$dark-secondary-text: mat.define-palette(customPalette.$gainsboro-palette, 800);
+// Foreground palette for light themes.
+$light-foreground: (
+  base:              map_get(customPalette.$gainsboro-palette, 500),
+  divider:           map_get(customPalette.$crimson-palette, 600),
+  dividers:          map_get(customPalette.$crimson-palette, 600),
+  disabled:          map_get(customPalette.$gainsboro-palette, 500),
+  disabled-button:   rgba(black, 0.26),
+  disabled-text:     map_get(customPalette.$gainsboro-palette, 500),
+  elevation:         map_get(customPalette.$gainsboro-palette, 500),
+  hint-text:         map_get(customPalette.$gainsboro-palette, 500),
+  secondary-text:    map_get(customPalette.$gainsboro-palette, 800),
+  icon:              rgba(black, 0.54),
+  icons:             rgba(black, 0.54),
+  text:              rgba(black, 0.87),
+  slider-off:        rgba(black, 0.26),
+  slider-off-active: rgba(black, 0.38),
+);
+
+// Background palette for light themes.
+$light-background: (
+  status-bar: map_get(customPalette.$gainsboro-palette, 300),
+  app-bar:    map_get(customPalette.$gainsboro-palette, 100),
+  background: map_get(customPalette.$gainsboro-palette, A100),
+  hover:      map_get(customPalette.$crimson-palette, 600), // TODO(kara): check style with Material Design UX
+  card:       map_get(customPalette.$gainsboro-palette, A400),
+  dialog:     map_get(customPalette.$gainsboro-palette, A200),
+  disabled-button: rgba(black, 0.12),
+  raised-button: white,
+  focused-button: $dark-focused,
+  selected-button: map_get(customPalette.$grey-palette, 300),
+  selected-disabled-button: map_get(customPalette.$grey-palette, 400),
+  disabled-button-toggle: map_get(customPalette.$grey-palette, 200),
+  unselected-chip: map_get(customPalette.$grey-palette, 300),
+  disabled-list-option: map_get(customPalette.$grey-palette, 200),
 );

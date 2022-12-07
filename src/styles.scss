@@ -15,11 +15,17 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$portfolio-primary: mat.define-palette(mat.$teal-palette);
-$portfolio-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+// $portfolio-primary: mat.define-palette(mat.$teal-palette);
+// $portfolio-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// // The warn palette is optional (defaults to red).
+// $portfolio-warn: mat.define-palette(mat.$red-palette);
+
+$portfolio-primary: mat.define-palette(customPalette.$bright-navy-blue-palette, 700, 700, 900);
+$portfolio-accent: mat.define-palette(customPalette.$blue-grey-palette, A200, A100, A400);
 
 // The warn palette is optional (defaults to red).
-$portfolio-warn: mat.define-palette(mat.$red-palette);
+$portfolio-warn: mat.define-palette(customPalette.$red-palette, 300);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
@@ -29,7 +35,38 @@ $portfolio-theme-light: mat.define-light-theme((
     accent: $portfolio-accent,
     warn: $portfolio-warn,
   ),
+  typography: mat.define-typography-config(),
+  density: 0,
 ));
+
+@debug $portfolio-theme-light;
+// Write over background and foreground with my versions.
+$portfolio-theme-light: map.set(
+  $portfolio-theme-light,
+  color,
+  background,
+  my.$light-background
+);
+
+$portfolio-theme-light: map.set(
+  $portfolio-theme-light,
+  color,
+  foreground,
+  my.$light-foreground
+);
+
+// Change the repeated ones after color just in case
+$portfolio-theme-light: map.set(
+  $portfolio-theme-light,
+  background,
+  my.$light-background
+);
+
+$portfolio-theme-light: map.set(
+  $portfolio-theme-light,
+  foreground,
+  my.$light-foreground
+);
 
 $portfolio-theme-dark: mat.define-dark-theme((
   color: (
