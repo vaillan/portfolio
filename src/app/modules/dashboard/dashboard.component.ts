@@ -11,28 +11,41 @@ import { ThemePalette } from '@angular/material/core';
 export class DashboardComponent {
   @ViewChild(MatPaginator) paginator?: MatPaginator;
 
-  token = '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';
-  usersDataSource: any;
   dataToDisplay = [];
   columns: string[];
+  linksPagination: any[] = [];
+  pageEvent!: PageEvent;
+  usersDataSource!: MatTableDataSource<any>;
 
   color: ThemePalette = 'accent';
-  checked: boolean = false;
-  disabled: boolean = false;
-  analyzeButton: boolean;
-
-  length!:number;
-  pageSize!:number;
+  length!: number;
+  pageSize!: number;
   pageIndex!: number;
 
-  hidePageSize = false;
-  showPageSizeOptions = false;
-  showFirstLastButtons = false;
-  linksPagination:any[] = [];
+  checkedA!: boolean;
+  checkedB!: boolean;
+  disabled!: boolean;
 
-  pageEvent!: PageEvent;
+  analyzeButton: boolean;
+  globeGraphosButton!: boolean;
+
+  hidePageSize!: boolean;
+  showPageSizeOptions!: boolean;
+  showFirstLastButtons!: boolean;
+
+  githubToken = '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';
+
 
   constructor(private httpService: HttpService) {
+    this.columns = ['name', 'type', 'company', 'location', 'country', 'followers', 'public_gists', 'public_repos'];
+    this.analyzeButton = this.checkedA;
+    this.globeGraphosButton = this.checkedB;
+    this.checkedA = false;
+    this.checkedB = false;
+    this.disabled = false;
+    this.hidePageSize = false;
+    this.showPageSizeOptions = false;
+    this.showFirstLastButtons = false;
     this.pageSize = 0;
     this.httpService.getUsersGithubStored().subscribe(res => {
       console.log(res);
@@ -42,14 +55,12 @@ export class DashboardComponent {
       this.pageIndex = res.users.current_page - 1;
       this.linksPagination = res.users.links;
     });
-    this.columns = ['name', 'type', 'company', 'location', 'followers', 'public_gists', 'public_repos'];
-    this.analyzeButton = this.checked;
   }
 
   getGithubUserList() {
     this.httpService.getLastUser().subscribe((lastUser: any) => {
       const since = lastUser.user ? lastUser.user.org_id : 100;
-      this.httpService.getGithubListUsers(this.token, since, 50).subscribe(res => {
+      this.httpService.getGithubListUsers(this.githubToken, since, 50).subscribe(res => {
         this.getUserInfoByLogin(res);
       });
     });
@@ -58,7 +69,7 @@ export class DashboardComponent {
 
   private getUserInfoByLogin(res: any) {
     res.forEach((userInList: any) => {
-      this.httpService.getGithubContextualUserInformation(this.token, userInList.login).subscribe(userInfo => {
+      this.httpService.getGithubContextualUserInformation(this.githubToken, userInList.login).subscribe(userInfo => {
         this.getLocationByUser(userInfo);
       });
     });
@@ -80,8 +91,9 @@ export class DashboardComponent {
 
   private inserUserToDataBase(location: any, userInfo: any) {
     if (location) {
-      userInfo.latitude = location.latLng.lat;
-      userInfo.longitude = location.latLng.lng;
+      userInfo.latitude = `${location.latLng.lat}`;
+      userInfo.longitude = `${location.latLng.lng}`;
+      userInfo.country = location.adminArea1;
       const data = { user: userInfo };
       this.httpService.insertGithubUser(data).subscribe({
         next: (v) => console.log(v),
@@ -95,6 +107,10 @@ export class DashboardComponent {
     this.analyzeButton = e.checked;
   }
 
+  globeSwitchSlideButton(e: any) {
+    this.globeGraphosButton = e.checked;
+  }
+
   getUsersGithubStored() {
     this.httpService.getUsersGithubStored().subscribe(res => {
       this.usersDataSource = new MatTableDataSource(res.users.data);
@@ -105,7 +121,7 @@ export class DashboardComponent {
     });
   }
 
-  handlePageEvent(e:any) {
+  handlePageEvent(e: any) {
     this.httpService.getPagination(this.linksPagination[(e.pageIndex + 1)].url).subscribe(res => {
       this.pageSize = res.users.per_page;
       this.length = res.users.total;
@@ -113,4 +129,9 @@ export class DashboardComponent {
       this.usersDataSource = new MatTableDataSource(res.users.data);
     });
   }
+
+  createGlobeGrophos() {
+
+  }
+
 }

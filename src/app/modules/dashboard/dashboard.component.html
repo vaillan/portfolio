@@ -7,9 +7,13 @@
     <div class="result">
       <h4 class="e-h2">Enable the button to get more users for analyze</h4>
       <section class="e-section">
-        <mat-slide-toggle class="e-margin" [color]="color" [checked]="checked" [disabled]="disabled"
+        <mat-slide-toggle class="e-margin" [color]="color" [checked]="checkedB" [disabled]="disabled"
           (change)="onSlideToggle($event)">
           Enable analyze
+        </mat-slide-toggle>
+        <mat-slide-toggle class="e-margin" [color]="color" [checked]="checkedA" [disabled]="disabled"
+          (change)="globeSwitchSlideButton($event)">
+          Enable globe graphos
         </mat-slide-toggle>
       </section>
     </div>
@@ -17,6 +21,9 @@
     <div class="d-button-container">
       <button mat-raised-button (click)="getGithubUserList()" class="demo-button" [disabled]="!analyzeButton">
         Get users datas to the analyze
+      </button>
+      <button mat-raised-button (click)="createGlobeGrophos()" class="demo-button" [disabled]="!globeGraphosButton">
+        Create globe graphos
       </button>
       <button mat-raised-button aria-label="" class="demo-button" (click)="getUsersGithubStored()">
         Update table
@@ -50,6 +57,11 @@
           <td mat-cell *matCellDef="let element">{{element.location}}</td>
         </ng-container>
 
+        <ng-container matColumnDef="country">
+          <th mat-header-cell *matHeaderCellDef>Country</th>
+          <td mat-cell *matCellDef="let element">{{element.country}}</td>
+        </ng-container>
+
         <!-- Weight Column -->
         <ng-container matColumnDef="followers">
           <th mat-header-cell *matHeaderCellDef>Followers</th>
@@ -71,7 +83,7 @@
         <tr mat-row *matRowDef="let row; columns: columns;"></tr>
       </table>
     </div>
-    <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [disabled]="disabled"
+    <mat-paginator class="mat-elevation-z8" (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [disabled]="disabled" *ngIf="(length > 0)"
       [showFirstLastButtons]="showFirstLastButtons" [hidePageSize]="hidePageSize" [pageIndex]="pageIndex">
     </mat-paginator>
   </div>

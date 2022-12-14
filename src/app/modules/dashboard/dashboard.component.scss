@@ -72,11 +72,12 @@ table {
 
 .e-section {
     display: flex;
-    align-content: center;
-    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 5px;
     height: 60px;
+    flex-direction: column;
 }
 
-.-margin {
-    margin: 10px;
+.e-margin {
+    margin: 5px;
 }
