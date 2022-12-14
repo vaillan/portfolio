@@ -5,9 +5,9 @@
 export const environment = {
   production: false,
   API_URL:'http://localhost:4200',
-  BaseUrl: 'http://stst.local/',
+  BaseUrl: 'http://www.portfolio.local/',
   auth: 'api/auth',
-  api: 'api/'
+  api: 'api'
 };
 
 /*

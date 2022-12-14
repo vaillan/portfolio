@@ -20,4 +20,4 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
     SharedModule
   ]
 })
-export class DashboardModule { }
+export class DashboardModule {}

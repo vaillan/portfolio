@@ -54,6 +54,7 @@ export class ThreeGlobeComponent {
     dLight2.position.set(-200, 500, 200);
     camera.add(dLight2);
 
+    camera.updateProjectionMatrix();
     camera.position.z = 290;
     camera.position.x = 0;
     camera.position.y = 0;
@@ -70,8 +71,8 @@ export class ThreeGlobeComponent {
     controls.enablePan = false;
     controls.minDistance = 200;
     controls.maxDistance = 500;
-    controls.rotateSpeed = 0.8;
-    controls.zoomSpeed = 1;
+    controls.rotateSpeed = 1;
+    controls.zoomSpeed = 0.8;
     controls.autoRotate = true;
 
     controls.minPolarAngle = Math.PI / 3.5;
@@ -111,7 +112,7 @@ export class ThreeGlobeComponent {
           )
         ) {
           return "rgba(255,255,255, 1)";
-        } else return "rgba(255,255,255, 0.7)";
+        } else {return "rgba(255,255,255, 0.7)";}
       });
 
     // NOTE Arc animations are followed after the globe enters the scene

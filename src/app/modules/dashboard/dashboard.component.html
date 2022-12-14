@@ -1,9 +1,78 @@
 <app-breadcrumb></app-breadcrumb>
 
 <div class="grid">
-  <div class="col-6_sm-12">
-    <button mat-fab matTooltip="Primary" color="primary" aria-label="Example fab with a heart icon" (click)="getGithubUserList()">
-      <mat-icon>favorite</mat-icon>
-    </button>
+  <div class="col-12_sm-12">
+    <h3 class="intro-portfolio-w text-gradient c-1">DATA ANALITYS</h3>
+
+    <div class="result">
+      <h4 class="e-h2">Enable the button to get more users for analyze</h4>
+      <section class="e-section">
+        <mat-slide-toggle class="e-margin" [color]="color" [checked]="checked" [disabled]="disabled"
+          (change)="onSlideToggle($event)">
+          Enable analyze
+        </mat-slide-toggle>
+      </section>
+    </div>
+
+    <div class="d-button-container">
+      <button mat-raised-button (click)="getGithubUserList()" class="demo-button" [disabled]="!analyzeButton">
+        Get users datas to the analyze
+      </button>
+      <button mat-raised-button aria-label="" class="demo-button" (click)="getUsersGithubStored()">
+        Update table
+      </button>
+    </div>
+
+    <div class="e-table-container">
+      <table mat-table [dataSource]="usersDataSource" class="mat-elevation-z8" matSort matSortActive="created"
+        matSortDisableClear matSortDirection="desc">
+        <!-- Position Column -->
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="type">
+          <th mat-header-cell *matHeaderCellDef>Type</th>
+          <td mat-cell *matCellDef="let element">{{element.type}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="company">
+          <th mat-header-cell *matHeaderCellDef>Company</th>
+          <td mat-cell *matCellDef="let element">{{element.company}}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="location">
+          <th mat-header-cell *matHeaderCellDef>Location</th>
+          <td mat-cell *matCellDef="let element">{{element.location}}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="followers">
+          <th mat-header-cell *matHeaderCellDef>Followers</th>
+          <td mat-cell *matCellDef="let element">{{element.followers}}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="public_gists">
+          <th mat-header-cell *matHeaderCellDef>Public gists</th>
+          <td mat-cell *matCellDef="let element">{{element.public_gists}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="public_repos">
+          <th mat-header-cell *matHeaderCellDef>Public repos</th>
+          <td mat-cell *matCellDef="let element">{{element.public_repos}}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+      </table>
+    </div>
+    <mat-paginator (page)="handlePageEvent($event)" [length]="length" [pageSize]="pageSize" [disabled]="disabled"
+      [showFirstLastButtons]="showFirstLastButtons" [hidePageSize]="hidePageSize" [pageIndex]="pageIndex">
+    </mat-paginator>
   </div>
 </div>
