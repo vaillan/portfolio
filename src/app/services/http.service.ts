@@ -109,4 +109,17 @@ export class HttpService {
       })
     );
   }
+
+  createGithubGlobeGraphos(data:Object): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const route = `${this.BaseUrl}/insert-globe-users-graphos`;
+    return this.http.post(route, data, { headers }).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
 }

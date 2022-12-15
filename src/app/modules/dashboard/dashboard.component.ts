@@ -131,7 +131,10 @@ export class DashboardComponent {
   }
 
   createGlobeGrophos() {
-
+    const data = {};
+    this.httpService.createGithubGlobeGraphos(data).subscribe(res => {
+      console.log(res);
+    })
   }
 
 }
