@@ -1,8 +1,7 @@
+import { HttpService } from './../../services/http.service';
 import { Component } from '@angular/core';
 import ThreeGlobe from 'three-globe';
-import airportsData from 'src/assets/json/data.json'
 import globeData from 'src/assets/json/globe-data.json';
-import flightsData from 'src/assets/json/flights.json';
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls"
 const THREE = require('three');
 
@@ -12,6 +11,18 @@ const THREE = require('three');
   styleUrls: ['./three-globe.component.scss']
 })
 export class ThreeGlobeComponent {
+  usersDataSource: any;
+  locationSDataSource: any;
+
+  constructor(private httpService: HttpService) {
+    this.httpService.getGithubGlobeUsers().subscribe(res => {
+      this.usersDataSource = res;
+    });
+
+    this.httpService.getGithubGlobeUsersLocation().subscribe(res => {
+      this.locationSDataSource = res;
+    });
+  }
 
   renderGlobe(): void {
     let mouseX = 0;
@@ -112,12 +123,12 @@ export class ThreeGlobeComponent {
           )
         ) {
           return "rgba(255,255,255, 1)";
-        } else {return "rgba(255,255,255, 0.7)";}
+        } else { return "rgba(255,255,255, 0.7)"; }
       });
 
     // NOTE Arc animations are followed after the globe enters the scene
     setTimeout(() => {
-      sphere.arcsData(flightsData.flights)
+      sphere.arcsData(this.usersDataSource.users)
         .arcColor((e: any) => {
           return e.status ? "#dab6fc" : "#bc00dd";
         })
@@ -127,28 +138,27 @@ export class ThreeGlobeComponent {
         .arcStroke((e: any) => {
           return e.status ? 0.5 : 0.3;
         })
-        .arcDashLength(0.9)
+        .arcDashLength(0.8)
         .arcDashGap(4)
-        .arcDashAnimateTime(1000)
+        .arcDashAnimateTime(2700)
         .arcsTransitionDuration(1000)
         .arcDashInitialGap((e: any) => e.order * 1)
-        .arcDashAnimateTime(1000)
-      // .labelsData(airportsData.airports)
-      // .labelColor(() => "#ffcb21")
-      // .labelDotOrientation((e: any) => {
-      //   return e.text === "ALA" ? "top" : "right";
-      // })
-      // .labelDotRadius(0.3)
-      // .labelSize((e: any) => e.size)
-      // .labelText("city")
-      // .labelResolution(6)
-      // .labelAltitude(0.01)
-      // .pointsData(airportsData.airports)
-      // .pointColor(() => "#ffffff")
-      // .pointsMerge(true)
-      // .pointAltitude(0.07)
-      // .pointRadius(0.05);
-    }, 1000);
+        .labelsData(this.locationSDataSource.locations)
+        .labelColor(() => "#ffcb21")
+        .labelDotOrientation((e: any) => {
+          return e.orientation;
+        })
+        .labelDotRadius(0.3)
+        .labelSize((e: any) => e.size)
+        .labelText("location")
+        .labelResolution(6)
+        .labelAltitude(0.01)
+        .pointsData(this.locationSDataSource?.locations)
+        .pointColor(() => "#ffffff")
+        .pointsMerge(true)
+        .pointAltitude(0.07)
+        .pointRadius(0.05);
+    }, 2000);
 
     sphere.rotateY(-Math.PI * (5 / 9));
     sphere.rotateZ(-Math.PI / 6);

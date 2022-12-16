@@ -110,11 +110,37 @@ export class HttpService {
     );
   }
 
-  createGithubGlobeGraphos(data:Object): Observable<any> {
+  createGithubGlobeGraphos(data: Object): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
     const route = `${this.BaseUrl}/insert-globe-users-graphos`;
     return this.http.post(route, data, { headers }).pipe(
       map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getGithubGlobeUsers(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const route = `${this.BaseUrl}/get-github-globe-users`;
+    return this.http.get(route, { headers }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  getGithubGlobeUsersLocation(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const route = `${this.BaseUrl}/get-github-globe-users-location`;
+    return this.http.get(route, { headers }).pipe(
+      map((data: any) => {
         return data;
       }),
       catchError((error) => {
