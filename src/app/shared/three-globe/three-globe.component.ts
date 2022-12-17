@@ -66,7 +66,7 @@ export class ThreeGlobeComponent {
     camera.add(dLight2);
 
     camera.updateProjectionMatrix();
-    camera.position.z = 290;
+    camera.position.z = 350;
     camera.position.x = 0;
     camera.position.y = 0;
 
@@ -78,6 +78,7 @@ export class ThreeGlobeComponent {
     // Initialize controls
     const controls: any = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
+    controls.enableZoom = false;
     controls.dynamicDampingFactor = 0.01;
     controls.enablePan = false;
     controls.minDistance = 200;
@@ -85,9 +86,10 @@ export class ThreeGlobeComponent {
     controls.rotateSpeed = 1;
     controls.zoomSpeed = 0.8;
     controls.autoRotate = true;
+    controls.autoRotateSpeed = 1.0;
 
     controls.minPolarAngle = Math.PI / 3.5;
-    controls.maxPolarAngle = Math.PI - Math.PI / 3;
+    controls.maxPolarAngle = Math.PI - Math.PI / 5;
 
     const onMouseMove = (event: any) => {
       mouseX = event.clientX - windowHalfX;
@@ -150,7 +152,7 @@ export class ThreeGlobeComponent {
         })
         .labelDotRadius(0.3)
         .labelSize((e: any) => e.size)
-        .labelText("location")
+        .labelText("country")
         .labelResolution(6)
         .labelAltitude(0.01)
         .pointsData(this.locationSDataSource?.locations)
@@ -158,7 +160,7 @@ export class ThreeGlobeComponent {
         .pointsMerge(true)
         .pointAltitude(0.07)
         .pointRadius(0.05);
-    }, 2000);
+    }, 2500);
 
     sphere.rotateY(-Math.PI * (5 / 9));
     sphere.rotateZ(-Math.PI / 6);
@@ -169,10 +171,12 @@ export class ThreeGlobeComponent {
     globeMaterial.shininess = 0.7;
 
     scene.add(sphere);
-
+    controls.update();
     const animate = () => {
       requestAnimationFrame(animate);
-      sphere.rotation.y += 0.001;
+      // sphere.rotation.y += 0.001;
+      // required if controls.enableDamping or controls.autoRotate are set to true
+      controls.update();
       renderer.render(scene, camera);
     };
 

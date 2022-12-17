@@ -42,17 +42,18 @@ $dark-foreground: (
 $dark-dividers: mat.define-palette(customPalette.$gainsboro-palette, 700);
 $dark-disabled-text: mat.define-palette(customPalette.$gainsboro-palette, 500);
 $dark-secondary-text: mat.define-palette(customPalette.$gainsboro-palette, 800);
+
 // Foreground palette for light themes.
 $light-foreground: (
-  base:              map_get(customPalette.$gainsboro-palette, 500),
-  divider:           map_get(customPalette.$crimson-palette, 600),
-  dividers:          map_get(customPalette.$crimson-palette, 600),
-  disabled:          map_get(customPalette.$gainsboro-palette, 500),
+  base:              map_get(customPalette.$gainsboro-palette, 900),
+  divider:           map_get(customPalette.$crimson-palette, 200),
+  dividers:          map_get(customPalette.$crimson-palette, 200),
+  disabled:          map_get(customPalette.$gainsboro-palette, 400),
   disabled-button:   rgba(black, 0.26),
-  disabled-text:     map_get(customPalette.$gainsboro-palette, 500),
-  elevation:         map_get(customPalette.$gainsboro-palette, 500),
+  disabled-text:     map_get(customPalette.$gainsboro-palette, 400),
+  elevation:         map_get(customPalette.$grey-palette, 900),
   hint-text:         map_get(customPalette.$gainsboro-palette, 500),
-  secondary-text:    map_get(customPalette.$gainsboro-palette, 800),
+  secondary-text:    map_get(customPalette.$gainsboro-palette, 100),
   icon:              rgba(black, 0.54),
   icons:             rgba(black, 0.54),
   text:              rgba(black, 0.87),
@@ -65,12 +66,12 @@ $light-background: (
   status-bar: map_get(customPalette.$gainsboro-palette, 300),
   app-bar:    map_get(customPalette.$gainsboro-palette, 100),
   background: map_get(customPalette.$gainsboro-palette, A100),
-  hover:      map_get(customPalette.$crimson-palette, 600), // TODO(kara): check style with Material Design UX
+  hover:      map_get(customPalette.$gainsboro-palette, 600),
   card:       map_get(customPalette.$gainsboro-palette, A400),
-  dialog:     map_get(customPalette.$gainsboro-palette, A400),
+  dialog:     map_get(customPalette.$grey-palette, 200),
   disabled-button: rgba(black, 0.12),
   raised-button: white,
-  focused-button: $dark-focused,
+  focused-button: white,
   selected-button: map_get(customPalette.$grey-palette, 300),
   selected-disabled-button: map_get(customPalette.$grey-palette, 400),
   disabled-button-toggle: map_get(customPalette.$grey-palette, 200),

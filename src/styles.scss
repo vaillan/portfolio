@@ -12,6 +12,13 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+html, body { height: 100%; }
+
+h3 {
+  font-family: Jost, sans-serif !important
+}
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
@@ -111,14 +118,6 @@ $portfolio-theme-dark: map.set(
 
 
 /* You can add global styles to this file, and also import other style files */
-
-html, body { height: 100%; }
-
-h3 {
-  font-family: Jost, sans-serif !important
-}
-
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .theme-light {
   @include mat.all-component-themes($portfolio-theme-light);
@@ -335,4 +334,12 @@ h1.sidebar-app-name {
 
 .tx-right {
   background-color: transparent;
+}
+
+.align-selft-center {
+  align-self: center;
+}
+
+.align-items-center {
+  align-items: center;
 }
