@@ -45,6 +45,7 @@ import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 
 import { BreadcrumbModule } from 'xng-breadcrumb';
+import { NgChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [],
@@ -96,7 +97,8 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
     PortalModule,
     ScrollingModule,
 
-    BreadcrumbModule
+    BreadcrumbModule,
+    NgChartsModule
   ],
 })
 export class AngularMaterialModule { }

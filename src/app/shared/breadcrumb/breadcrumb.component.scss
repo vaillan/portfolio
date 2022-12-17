@@ -1,44 +1,13 @@
-/**
- *xng-breadcrumb
- */
-//  ::ng-deep .xng-breadcrumb-root {
-//   padding: 8px 16px;
-//   display: inline-block;
-//   border-radius: 5px;
-//   background-color: rgb(211 215 233);
-// }
-
-// ::ng-deep .xng-breadcrumb-separator {
-//   padding: 0 4px;
-// }
-
-// ::ng-deep .xng-breadcrumb-trail {
-//   margin: 0px;
-// }
-
-// ::ng-deep .black-content {
-//   .xng-breadcrumb-root {
-//     background-color: rgb(39 41 61);
-//   }
-
-//   .xng-breadcrumb-trail {
-//     color: rgb(82 95 127) !important;
-//   }
-//   .mat-chip.mat-standard-chip {
-//     color: rgb(255 255 255 / 50%);
-//     background-color: rgb(25 31 49);
-//   }
-// }
-@use '@angular/material' as mat;
-@use '../../../assets/scss/palette' as customPalette;
 
 ::ng-deep .theme-dark {
   .xng-breadcrumb-item {
-    color: map_get(customPalette.$gainsboro-palette, 50) !important;
+    color: #f8f9fa !important;
   }
 
   .xng-breadcrumb-trail {
-    color: map_get(customPalette.$gainsboro-palette, 300) !important;
+    color: #ced4da !important;
   }
-
 }
+ .width-card {
+  width: fit-content;
+ }

@@ -23,11 +23,11 @@
 }
 
 /* Structure */
-.e-container {
+.example-container {
     position: relative;
 }
 
-.e-table-container {
+.example-table-container {
     position: relative;
     min-height: 200px;
     max-height: 400px;
@@ -38,7 +38,7 @@ table {
     width: 100%;
 }
 
-.e-loading-shade {
+.example-loading-shade {
     position: absolute;
     top: 0;
     left: 0;
@@ -51,7 +51,7 @@ table {
     justify-content: center;
 }
 
-.e-rate-limit-reached {
+.example-rate-limit-reached {
     max-width: 360px;
     text-align: center;
 }
