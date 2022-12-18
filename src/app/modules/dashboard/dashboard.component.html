@@ -20,7 +20,18 @@
         </div>
       </div>
       <div class="col-6_sm-12">
-        ...    
+        <div class="col grid-3-right">
+          <button mat-mini-fab color="primary" aria-label="Line chart" [matMenuTriggerFor]="appMenu">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #appMenu="matMenu" class="menu mat-elevation-z4">
+            <ng-template matMenuContent>
+              <button mat-menu-item (click)="getLineChart('githubAccounts')">Github Accounts</button>
+              <button mat-menu-item (click)="getLineChart('totalFollowers')">Total Followers</button>
+            </ng-template>
+          </mat-menu>
+        </div>
+        <app-line-chart [lineChartData]="lineChartData"></app-line-chart>
       </div>
 
     </div>

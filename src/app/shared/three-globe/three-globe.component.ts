@@ -27,30 +27,33 @@ export class ThreeGlobeComponent {
   renderGlobe(): void {
     let mouseX = 0;
     let mouseY = 0;
-    const globeContainer: any = document.querySelector('#globeViz');
-    globeContainer.classList.add("globe-background");
+    // const globe: any = document.querySelector('#globeViz');
+    const globe: any = document.getElementById("globeViz");
+
+    globe.classList.add("globe-background");
     const scene = new THREE.Scene();
 
-    let windowHalfX = globeContainer.offsetWidth / 2;
-    let windowHalfY = globeContainer.offsetWidth / 2;
+    let windowHalfX = globe.offsetWidth / 2;
+    let windowHalfY = globe.offsetWidth / 2;
 
     const renderer = new THREE.WebGLRenderer({
       antialias: true,
       alpha: true,
-      canvas: document.querySelector('canvas')
+      canvas: document.querySelector('#globe')
+      // canvas: document.querySelector('canvas'),
     });
 
-    renderer.setSize(globeContainer.offsetWidth, globeContainer.offsetHeight);
+    renderer.setSize(globe.offsetWidth, globe.offsetHeight);
 
-    renderer.setPixelRatio(globeContainer.devicePixelRatio);
+    renderer.setPixelRatio(globe.devicePixelRatio);
     renderer.setClearColor(0x000000, 0);
 
-    const globe: any = document.getElementById("globeViz");
+    // const globe: any = document.getElementById("globeViz");
     globe.appendChild(renderer.domElement);
 
     // Initialize camera, light
     const camera = new THREE.PerspectiveCamera();
-    camera.aspect = globeContainer.offsetWidth / globeContainer.offsetHeight;
+    camera.aspect = globe.offsetWidth / globe.offsetHeight;
     camera.updateProjectionMatrix();
 
     const dLight = new THREE.DirectionalLight(0xffffff, 0.8);
@@ -97,11 +100,11 @@ export class ThreeGlobeComponent {
     }
 
     const onWindowResize = () => {
-      camera.aspect = globeContainer.offsetWidth / globeContainer.offsetHeight;
+      camera.aspect = globe.offsetWidth / globe.offsetHeight;
       camera.updateProjectionMatrix();
-      windowHalfX = globeContainer.offsetWidth / 1.5;
-      windowHalfY = globeContainer.offsetHeight / 1.5;
-      renderer.setSize(globeContainer.offsetWidth, globeContainer.offsetHeight);
+      windowHalfX = globe.offsetWidth / 1.5;
+      windowHalfY = globe.offsetHeight / 1.5;
+      renderer.setSize(globe.offsetWidth, globe.offsetHeight);
     }
 
     globe.addEventListener("resize", onWindowResize, false);

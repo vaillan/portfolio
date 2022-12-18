@@ -81,3 +81,7 @@ table {
 .e-margin {
     margin: 5px;
 }
+
+::ng-deep .menu {
+    background-color: whitesmoke;
+}

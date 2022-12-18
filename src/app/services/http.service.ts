@@ -148,4 +148,18 @@ export class HttpService {
       })
     );
   }
+
+  getLineChartDataSet(url:string): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    url = url == 'githubAccounts' ? 'get-github-line-graphyc-accounts': url == 'totalFollowers' ? 'get-github-line-graphyc-followers' : 'get-github-line-graphyc-accounts';
+    const route = `${this.BaseUrl}/${url}`;
+    return this.http.get(route, { headers }).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
 }

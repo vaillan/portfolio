@@ -3,12 +3,21 @@
 @use '../scss/palette' as customPalette;
 
 $dark-focused: rgba(black, 0.12);
-
+$dark-primary-text: rgba(black, 0.87);
+$dark-secondary-text: rgba(black, 0.54);
+$dark-disabled-text: rgba(black, 0.38);
+$dark-dividers: rgba(black, 0.12);
+$dark-focused: rgba(black, 0.12);
+$light-primary-text: white;
+$light-secondary-text: rgba(white, 0.7);
+$light-disabled-text: rgba(white, 0.5);
+$light-dividers: rgba(white, 0.12);
+$light-focused: rgba(white, 0.12);
 // Background palette for dark themes.
 $dark-background: (
   status-bar: black,
   app-bar: map_get(customPalette.$gainsboro-palette, 900),
-  background: map_get(customPalette.$gainsboro-palette, 800),
+  background: map_get(customPalette.$gainsboro-palette, 700),
   hover: rgba(white, 0.04),
   card: map_get(customPalette.$crimson-palette, 300),
   dialog: map_get(customPalette.$crimson-palette, 300),
@@ -24,57 +33,57 @@ $dark-background: (
 
 // Foreground palette for dark themes.
 $dark-foreground: (
-  base: white,
+  base:              white,
   divider: map_get(customPalette.$bright-navy-blue-palette, 50),
   dividers: map_get(customPalette.$bright-navy-blue-palette, 50),
-  disabled: rgba(white, 0.3),
-  disabled-button: rgba(white, 0.3),
-  disabled-text: rgba(white, 0.3),
-  hint-text: rgba(white, 0.3),
-  secondary-text: rgba(white, 0.7),
-  icon: white,
-  icons: white,
-  text: white,
-  slider-off: rgba(white, 0.3),
+  disabled:          $light-disabled-text,
+  disabled-button:   rgba(white, 0.3),
+  disabled-text:     $light-disabled-text,
+  elevation:         black,
+  hint-text:         $light-disabled-text,
+  secondary-text:    $light-secondary-text,
+  icon:              white,
+  icons:             white,
+  text:              white,
+  slider-min:        white,
+  slider-off:        rgba(white, 0.3),
   slider-off-active: rgba(white, 0.3),
 );
 
-$dark-dividers: mat.define-palette(customPalette.$gainsboro-palette, 700);
-$dark-disabled-text: mat.define-palette(customPalette.$gainsboro-palette, 500);
-$dark-secondary-text: mat.define-palette(customPalette.$gainsboro-palette, 800);
-
 // Foreground palette for light themes.
 $light-foreground: (
-  base:              map_get(customPalette.$gainsboro-palette, 900),
-  divider:           map_get(customPalette.$crimson-palette, 200),
-  dividers:          map_get(customPalette.$crimson-palette, 200),
-  disabled:          map_get(customPalette.$gainsboro-palette, 400),
+  base:              black,
+  divider:           $dark-dividers,
+  dividers:          $dark-dividers,
+  disabled:          $dark-disabled-text,
   disabled-button:   rgba(black, 0.26),
-  disabled-text:     map_get(customPalette.$gainsboro-palette, 400),
-  elevation:         map_get(customPalette.$grey-palette, 900),
-  hint-text:         map_get(customPalette.$gainsboro-palette, 500),
-  secondary-text:    map_get(customPalette.$gainsboro-palette, 100),
+  disabled-text:     $dark-disabled-text,
+  elevation:         black,
+  hint-text:         $dark-disabled-text,
+  secondary-text:    $dark-secondary-text,
   icon:              rgba(black, 0.54),
   icons:             rgba(black, 0.54),
   text:              rgba(black, 0.87),
+  slider-min:        rgba(black, 0.87),
   slider-off:        rgba(black, 0.26),
   slider-off-active: rgba(black, 0.38),
 );
 
 // Background palette for light themes.
 $light-background: (
-  status-bar: map_get(customPalette.$gainsboro-palette, 300),
-  app-bar:    map_get(customPalette.$gainsboro-palette, 100),
-  background: map_get(customPalette.$gainsboro-palette, A100),
-  hover:      map_get(customPalette.$gainsboro-palette, 600),
-  card:       map_get(customPalette.$gainsboro-palette, A400),
-  dialog:     map_get(customPalette.$grey-palette, 200),
+  status-bar: map.get(customPalette.$grey-palette, 300),
+  app-bar:    map.get(customPalette.$grey-palette, 100),
+  background: map.get(customPalette.$grey-palette, 50),
+  hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
+  card:       white,
+  dialog:     white,
   disabled-button: rgba(black, 0.12),
   raised-button: white,
-  focused-button: white,
-  selected-button: map_get(customPalette.$grey-palette, 300),
-  selected-disabled-button: map_get(customPalette.$grey-palette, 400),
-  disabled-button-toggle: map_get(customPalette.$grey-palette, 200),
-  unselected-chip: map_get(customPalette.$grey-palette, 300),
-  disabled-list-option: map_get(customPalette.$grey-palette, 200),
+  focused-button: rgb(128, 128, 128),
+  selected-button: map.get(customPalette.$grey-palette, 300),
+  selected-disabled-button: map.get(customPalette.$grey-palette, 400),
+  disabled-button-toggle: map.get(customPalette.$grey-palette, 200),
+  unselected-chip: map.get(customPalette.$grey-palette, 300),
+  disabled-list-option: map.get(customPalette.$grey-palette, 200),
+  tooltip: map.get(customPalette.$grey-palette, 700),
 );

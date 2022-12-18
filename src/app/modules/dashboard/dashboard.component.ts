@@ -3,6 +3,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ThemePalette } from '@angular/material/core';
+import { ChartConfiguration } from "chart.js";
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -35,7 +36,10 @@ export class DashboardComponent {
 
   githubToken = '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';
 
-
+  lineChartData: ChartConfiguration<'line'>['data'] = {
+    labels: [],
+    datasets: []
+  };
   constructor(private httpService: HttpService) {
     this.columns = ['name', 'type', 'company', 'location', 'country', 'followers', 'public_gists', 'public_repos'];
     this.analyzeButton = this.checkedA;
@@ -47,6 +51,7 @@ export class DashboardComponent {
     this.showPageSizeOptions = false;
     this.showFirstLastButtons = false;
     this.pageSize = 0;
+
     this.httpService.getUsersGithubStored().subscribe(res => {
       console.log(res);
       this.usersDataSource = new MatTableDataSource(res.users.data);
@@ -54,6 +59,31 @@ export class DashboardComponent {
       this.length = res.users.total;
       this.pageIndex = res.users.current_page - 1;
       this.linksPagination = res.users.links;
+    });
+
+    this.httpService.getLineChartDataSet('githubAccounts').subscribe({
+      next: (res: any) => {
+        const labels = Object.keys(res.data);
+        const data: any = Object.values(res.data);
+
+        this.lineChartData = {
+          labels: labels,
+          datasets: [
+            {
+              data: data,
+              label: 'Github Accounts',
+              fill: true,
+              tension: 0.5,
+              borderColor: 'rgba(82, 78, 183, 1)',
+              backgroundColor: 'rgba(132, 140, 207, 1)'
+            }
+          ]
+        }
+
+      },
+      error: (error) => {
+        console.error(error)
+      }
     });
   }
 
@@ -135,6 +165,35 @@ export class DashboardComponent {
     this.httpService.createGithubGlobeGraphos(data).subscribe(res => {
       console.log(res);
     })
+  }
+
+  getLineChart(url:string) {
+    let title = url === 'githubAccounts'? 'Github Accounts': 'Total Followers';
+    this.httpService.getLineChartDataSet(url).subscribe({
+      next: (res: any) => {
+        const labels = Object.keys(res.data);
+        const data: any = Object.values(res.data);
+
+        this.lineChartData = {
+          labels: labels,
+          datasets: [
+            {
+              data: data,
+              label: title,
+              fill: true,
+              tension: 0.5,
+              borderColor: 'rgba(82, 78, 183, 1)',
+              backgroundColor: 'rgba(132, 140, 207, 1)'
+            }
+          ]
+        }
+
+      },
+      error: (error) => {
+        console.error(error)
+      }
+    }
+    );
   }
 
 }
