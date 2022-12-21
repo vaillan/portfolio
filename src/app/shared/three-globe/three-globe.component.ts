@@ -187,4 +187,10 @@ export class ThreeGlobeComponent {
     onWindowResize();
     animate();
   }
+
+  ngOnDestroy() {
+    const globeContainer: any = document.getElementById("globeViz");
+    const globeCanvas:any = document.getElementById("globe");
+    globeContainer.removeChild(globeCanvas);
+  }
 }

@@ -167,8 +167,8 @@ export class DashboardComponent {
     })
   }
 
-  getLineChart(url:string) {
-    let title = url === 'githubAccounts'? 'Github Accounts': 'Total Followers';
+  getLineChart(url: string) {
+    let title = url === 'githubAccounts' ? 'Github Accounts' : 'Total Followers';
     this.httpService.getLineChartDataSet(url).subscribe({
       next: (res: any) => {
         const labels = Object.keys(res.data);
