@@ -82,6 +82,11 @@ table {
     margin: 5px;
 }
 
-::ng-deep .menu {
-    background-color: whitesmoke;
+::ng-deep .cdk-overlay-pane {
+    background: whitesmoke;
+    border-radius: 5px;
+}
+
+.mt-1 {
+    margin-top: 1rem;
 }

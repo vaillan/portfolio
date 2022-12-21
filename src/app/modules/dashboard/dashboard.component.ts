@@ -34,7 +34,7 @@ export class DashboardComponent {
   showPageSizeOptions!: boolean;
   showFirstLastButtons!: boolean;
 
-  githubToken = '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';
+  githubToken = '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';
 
   lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: [],

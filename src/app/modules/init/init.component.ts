@@ -5,14 +5,11 @@ import { ThreeGlobeComponent } from 'src/app/shared/three-globe/three-globe.comp
   templateUrl: './init.component.html',
   styleUrls: ['./init.component.scss']
 })
-export class InitComponent implements OnInit, AfterViewInit {
-  @ViewChild('threeGlobe', {static: true}) threeGlobe!: ThreeGlobeComponent;
+export class InitComponent implements OnInit {
+  // @ViewChild('threeGlobe', {static: true}) threeGlobe!: ThreeGlobeComponent;
 
   constructor() { }
 
   ngOnInit() {}
 
-  ngAfterViewInit(): void {
-    this.threeGlobe.renderGlobe();
-  }
 }

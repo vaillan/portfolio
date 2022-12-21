@@ -17,21 +17,27 @@ export class ThreeGlobeComponent {
   constructor(private httpService: HttpService) {
     this.httpService.getGithubGlobeUsers().subscribe(res => {
       this.usersDataSource = res;
+      this.httpService.getGithubGlobeUsersLocation().subscribe(res => {
+        this.locationSDataSource = res;
+        this.renderGlobe();
+      });
     });
 
-    this.httpService.getGithubGlobeUsersLocation().subscribe(res => {
-      this.locationSDataSource = res;
-    });
   }
 
   renderGlobe(): void {
     let mouseX = 0;
     let mouseY = 0;
-    // const globe: any = document.querySelector('#globeViz');
     const globe: any = document.getElementById("globeViz");
 
     globe.classList.add("globe-background");
     const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      globe.offsetWidth / globe.offsetHeight,
+      0.1,
+      1000
+    );
 
     let windowHalfX = globe.offsetWidth / 2;
     let windowHalfY = globe.offsetWidth / 2;
@@ -40,19 +46,17 @@ export class ThreeGlobeComponent {
       antialias: true,
       alpha: true,
       canvas: document.querySelector('#globe')
-      // canvas: document.querySelector('canvas'),
     });
 
     renderer.setSize(globe.offsetWidth, globe.offsetHeight);
-
     renderer.setPixelRatio(globe.devicePixelRatio);
+
     renderer.setClearColor(0x000000, 0);
 
-    // const globe: any = document.getElementById("globeViz");
-    globe.appendChild(renderer.domElement);
+    // globe.appendChild(renderer.domElement);
 
     // Initialize camera, light
-    const camera = new THREE.PerspectiveCamera();
+
     camera.aspect = globe.offsetWidth / globe.offsetHeight;
     camera.updateProjectionMatrix();
 
@@ -68,8 +72,7 @@ export class ThreeGlobeComponent {
     dLight2.position.set(-200, 500, 200);
     camera.add(dLight2);
 
-    camera.updateProjectionMatrix();
-    camera.position.z = 350;
+    camera.position.z = 250;
     camera.position.x = 0;
     camera.position.y = 0;
 
@@ -84,8 +87,8 @@ export class ThreeGlobeComponent {
     controls.enableZoom = false;
     controls.dynamicDampingFactor = 0.01;
     controls.enablePan = false;
-    controls.minDistance = 200;
-    controls.maxDistance = 500;
+    // controls.minDistance = 200;
+    // controls.maxDistance = 500;
     controls.rotateSpeed = 1;
     controls.zoomSpeed = 0.8;
     controls.autoRotate = true;
@@ -102,12 +105,10 @@ export class ThreeGlobeComponent {
     const onWindowResize = () => {
       camera.aspect = globe.offsetWidth / globe.offsetHeight;
       camera.updateProjectionMatrix();
-      windowHalfX = globe.offsetWidth / 1.5;
-      windowHalfY = globe.offsetHeight / 1.5;
       renderer.setSize(globe.offsetWidth, globe.offsetHeight);
     }
 
-    globe.addEventListener("resize", onWindowResize, false);
+    globe.addEventListener("resize", onWindowResize(), false);
     globe.addEventListener("mousemove", (e: any) => { onMouseMove(e) });
 
     //create a sphere
@@ -137,9 +138,6 @@ export class ThreeGlobeComponent {
         .arcColor((e: any) => {
           return e.status ? "#dab6fc" : "#bc00dd";
         })
-        .arcAltitude((e: any) => {
-          return e.arcAlt;
-        })
         .arcStroke((e: any) => {
           return e.status ? 0.5 : 0.3;
         })
@@ -153,31 +151,33 @@ export class ThreeGlobeComponent {
         .labelDotOrientation((e: any) => {
           return e.orientation;
         })
-        .labelDotRadius(0.3)
+        .labelDotRadius(0.5)
         .labelSize((e: any) => e.size)
         .labelText("country")
         .labelResolution(6)
-        .labelAltitude(0.01)
+        .labelAltitude(0.07)
         .pointsData(this.locationSDataSource?.locations)
-        .pointColor(() => "#ffffff")
+        .pointColor(() => "#82ffee")
         .pointsMerge(true)
         .pointAltitude(0.07)
-        .pointRadius(0.05);
+        .pointRadius(0.1);
     }, 2500);
 
-    sphere.rotateY(-Math.PI * (5 / 9));
-    sphere.rotateZ(-Math.PI / 6);
+    // sphere.rotateY(-Math.PI * (5 / 9));
+    // sphere.rotateZ(-Math.PI / 6);
     const globeMaterial: any = sphere.globeMaterial();
     globeMaterial.color = new THREE.Color(0x3a228a);
     globeMaterial.emissive = new THREE.Color(0x220038);
     globeMaterial.emissiveIntensity = 0.1;
     globeMaterial.shininess = 0.7;
 
+    // NOTE Cool stuff
+    // globeMaterial.wireframe = true;
+
     scene.add(sphere);
     controls.update();
     const animate = () => {
       requestAnimationFrame(animate);
-      // sphere.rotation.y += 0.001;
       // required if controls.enableDamping or controls.autoRotate are set to true
       controls.update();
       renderer.render(scene, camera);

@@ -17,9 +17,10 @@ $light-focused: rgba(white, 0.12);
 $dark-background: (
   status-bar: black,
   app-bar: map_get(customPalette.$gainsboro-palette, 900),
-  background: map_get(customPalette.$gainsboro-palette, 700),
+  background: map_get(customPalette.$gainsboro-palette, 800),
   hover: rgba(white, 0.04),
-  card: map_get(customPalette.$crimson-palette, 300),
+  // card: map_get(customPalette.$crimson-palette, 300),
+  card: map_get(customPalette.$gainsboro-palette, 600),
   dialog: map_get(customPalette.$crimson-palette, 300),
   disabled-button: customPalette.$bright-navy-blue-palette,
   raised-button: map-get(customPalette.$crimson-palette, 800),
@@ -76,7 +77,7 @@ $light-background: (
   background: map.get(customPalette.$grey-palette, 50),
   hover:      rgba(black, 0.04), // TODO(kara): check style with Material Design UX
   card:       white,
-  dialog:     white,
+  dialog:     map.get(customPalette.$grey-palette, 100),
   disabled-button: rgba(black, 0.12),
   raised-button: white,
   focused-button: rgb(128, 128, 128),
