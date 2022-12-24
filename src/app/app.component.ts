@@ -11,7 +11,7 @@ export class AppComponent {
   isDark:any = false;
   @HostBinding('class')
   get themeMode() {
-    return this.isDark ? 'theme-dark' : 'theme-light';
+    return this.isDark ? 'dark-theme' : '';
   }
 
   constructor(private themeService: ThemeService) {

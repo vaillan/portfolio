@@ -4,7 +4,7 @@
   <div class="col-12_sm-12">
     <div class="grid">
       <div class="col-6_sm-12">
-        <h3 class="intro-portfolio-w text-gradient c-1">DATA ANALITYS</h3>
+        <h3 class="custom-display-3 text-gradient c-1">DATA ANALITYS</h3>
         <div class="result">
           <h4 class="e-h2">Enable the button to get more users for analyze</h4>
           <section class="e-section">
@@ -36,12 +36,12 @@
           <button mat-icon-button [matMenuTriggerFor]="appMenu" aria-label="Example icon-button with a menu">
             <mat-icon>more_vert</mat-icon>
           </button>
-          <mat-menu #appMenu="matMenu" panelClass="" color="accent">
-            <button mat-menu-item (click)="getLineChart('githubAccounts')">
+          <mat-menu #appMenu="matMenu" class="menu-theme">
+            <button mat-menu-item color="primary" (click)="getLineChart('githubAccounts')">
               <mat-icon>dialpad</mat-icon>
               <span>Github Accounts</span>
             </button>
-            <button mat-menu-item (click)="getLineChart('totalFollowers')">
+            <button mat-menu-item color="primary" (click)="getLineChart('totalFollowers')">
               <mat-icon>voicemail</mat-icon>
               <span>Total Followers</span>
             </button>

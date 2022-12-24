@@ -52,7 +52,7 @@ export class ThreeGlobeComponent {
     renderer.setPixelRatio(globe.devicePixelRatio);
 
     renderer.setClearColor(0x000000, 0);
-
+    scene.background = null;
     // globe.appendChild(renderer.domElement);
 
     // Initialize camera, light
@@ -90,7 +90,7 @@ export class ThreeGlobeComponent {
     // controls.minDistance = 200;
     // controls.maxDistance = 500;
     controls.rotateSpeed = 1;
-    controls.zoomSpeed = 0.8;
+    // controls.zoomSpeed = 0.8;
     controls.autoRotate = true;
     controls.autoRotateSpeed = 1.0;
 
@@ -118,7 +118,7 @@ export class ThreeGlobeComponent {
     })
       .hexPolygonsData(globeData.features)
       .hexPolygonResolution(3)
-      .hexPolygonMargin(0.7)
+      .hexPolygonMargin(0.6)
       .showAtmosphere(true)
       .atmosphereColor("#3a228a")
       .atmosphereAltitude(0.25)
@@ -141,10 +141,10 @@ export class ThreeGlobeComponent {
         .arcStroke((e: any) => {
           return e.status ? 0.5 : 0.3;
         })
-        .arcDashLength(0.8)
-        .arcDashGap(4)
-        .arcDashAnimateTime(2700)
-        .arcsTransitionDuration(1000)
+        .arcDashLength(1)
+        .arcDashGap(7)
+        .arcDashAnimateTime(3000)
+        .arcsTransitionDuration(3000)
         .arcDashInitialGap((e: any) => e.order * 1)
         .labelsData(this.locationSDataSource.locations)
         .labelColor(() => "#ffcb21")
