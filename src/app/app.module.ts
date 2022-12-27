@@ -20,6 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { SharedModule } from './shared/shared.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +46,7 @@ import { SharedModule } from './shared/shared.module';
     MatIconModule,
     MatListModule,
     SharedModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
