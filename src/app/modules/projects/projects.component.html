@@ -1,1 +1,50 @@
 <app-breadcrumb></app-breadcrumb>
+
+<br />
+<br />
+<br />
+
+<div class="grid">
+    <div class="col-12">
+        <div class="grid">
+            <div class="col">
+                <div class="mat-elevation-z4 fit-width-card">
+                    <mat-card style="max-width: 400px;">
+                        <mat-card-header>
+                            <mat-card-title style="min-height: 60px;">
+                                Three globe visualization project
+                            </mat-card-title>
+                        </mat-card-header>
+                        <app-three-globe [height]="'320px'" [widht]="'400px'"></app-three-globe>
+                        <mat-card-actions align="end">
+                            <a mat-icon-button aria-label="" matTooltip="Open complete information"
+                                routerLink="/page/projects/three-globe">
+                                <mat-icon>open_in_new</mat-icon>
+                            </a>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+            <div class="col">
+                <div class="mat-elevation-z4 fit-width-card">
+                    <mat-card style="max-width: 400px;">
+                        <mat-card-header>
+                            <mat-card-title style="min-height: 60px;">
+                                Remote control system in a wireless sensor network for monitoring cloud services
+                                within an
+                                industry 4.0 laboratory
+                            </mat-card-title>
+                        </mat-card-header>
+                        <img mat-card-image src="assets/img/degree.png" alt="">
+                        <mat-card-actions align="end">
+                            <a mat-icon-button aria-label="" matTooltip="Open complete information"
+                                routerLink="/page/projects/industria4.0">
+                                <mat-icon>open_in_new</mat-icon>
+                            </a>
+                        </mat-card-actions>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
