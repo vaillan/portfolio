@@ -5,11 +5,11 @@
 
 <div class="grid">
     <div class="col-6_sm-12">
-        <h3>
+        <h1 class="text-xl font-semibold">
             Remote control system in a wireless sensor network for monitoring cloud services within an industry 4.0
             laboratory
-        </h3>
-        <p style="font-size: 1.25rem; padding: 5px;">
+        </h1>
+        <p class="text-base">
             The term industry 4.0 is widely used in Europe, it is also common to refer to this concept with terms such
             as "Smart Factory" or "Industrial Internet". In short, it is about the application to industry of the
             "Internet of Things" (IoT) model. All these terms have in common the recognition that manufacturing
@@ -26,29 +26,55 @@
                 <a mat-raised-button color="primary" routerLink="#">Download Tesis</a>
             </div>
             <div class="col-6_sm-12">
-                <h4>VISUALIZACIÓN DE DATOS EN THINGER.IO POR MEDIO DE LA RED LPWAN</h4>
+                <h1 class="text-xl font-semibold truncate ...">VISUALIZACIÓN DE DATOS EN THINGER.IO POR MEDIO DE LA RED LPWAN</h1>
+                <mat-divider></mat-divider>
                 <mat-card>
                     <img mat-card-image src="assets/img/degree.png" alt="">
                 </mat-card>
             </div>
             <div class="col-6_sm-12">
-                <h4>VISUALIZACIÓN DE DATOS A TRAVÉS DE LA RED WI-FI</h4>
+                <h1 class="text-xl font-semibold truncate ...">VISUALIZACIÓN DE DATOS A TRAVÉS DE LA RED WI-FI</h1>
+                <mat-divider></mat-divider>
                 <mat-card>
                     <img mat-card-image src="assets/img/degree2.png" alt="">
                 </mat-card>
             </div>
+            <p class="text-base">
+                En conclusión, con respecto al análisis realizado a lo largo del desarrollo del
+                proyecto, con el diseño propio y la plataforma de servicio en la nube gratuita se
+                redujo el costo de implementación del sistema de telecontrol para el laboratorio de
+                industria 4.0 para el Instituto Tecnológico Superior de Coatzacoalcos, obteniendo
+                mediciones eficientes para dicha aplicación con la tecnología utilizada en el proyecto
+                propuesto. <br />
+                Para el sistema de telecontrol IoT bajo la red LPWAN, los sensores máximos
+                que se pueden colocar son 6, solo si se reduce la resolución de lectura de cada
+                sensor a un máximo de 2 bytes por sensor, en esta ocasión solo fueron necesarios
+                2 sensores con los cuales se leyeron 5 variables, ocupando la carga útil máxima
+                que son 12 bytes de transmisión de datos para la red Sigfox, el consumo de energía
+                eléctrica del módulo para la red LPWAN es de 304.5 mAh, la ventaja de la tecnología
+                Sigfox es que al transmitir los datos se guardan en la nube de Sigfox sin necesidad
+                de estar conectado al internet para transmitir esos datos, para visualizar los datos
+                se puede hacer por medio de callbacks provenientes de cualquier plataforma web
+                dedicada al monitoreo de variables físicas medibles, de esta forma se pueden
+                visualizar desde cualquier red como la 5G, 4G, y IEE 802.11 a/b/n, obteniendo una
+                amplia gama de redes para combinar con la tecnología Sigfox. En el caso del
+                sistema de telecontrol IoT bajo la red WI-FI no se encuentran restricciones en cuanto
+                al número de datos de transmisión, la transmisión de datos depende del paquete de internet con el que
+                cuente, el consumo de energía eléctrica del módulo para la red
+                IEEE 802.11 es de 131.5 mAh.
+            </p>
         </div>
     </div>
     <div class="col-6_sm-12">
         <div class="grid">
             <div class="col-12">
-                <h3>Architecture design of the remote control system</h3>
+                <h1 class="text-xl font-semibold">Architecture design of the remote control system</h1>
                 <mat-card>
                     <img mat-card-image src="assets/img/architecture.png" alt="">
                 </mat-card>
             </div>
             <div class="col-12">
-                <h3>Control system</h3>
+                <h1 class="text-xl font-semibold">Control system</h1>
                 <mat-card>
                     <img mat-card-image src="assets/img/degree3.png" alt="">
                 </mat-card>

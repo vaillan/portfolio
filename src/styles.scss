@@ -1,160 +1,22 @@
-
-// // Custom Theming for Angular Material
-// // For more information: https://material.angular.io/guide/theming
-// @use '@angular/material' as mat;
-// @use '../src/assets/scss/palette' as customPalette;
-// @use '../src//assets/scss/custom-style' as my;
-// // Plus imports for other components in your app.
-
-// // Include the common styles for Angular Material. We include this here so that you only
-// // have to load a single css file for Angular Material in your app.
-// // Be sure that you only ever include this mixin once!
-// @include mat.core();
-
-// // Define the palettes for your theme using the Material Design palettes available in palette.scss
-// // (imported above). For each palette, you can optionally specify a default, lighter, and darker
-// // hue. Available color palettes: https://material.io/design/color/
-// // $portfolio-primary: mat.define-palette(mat.$teal-palette);
-// // $portfolio-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-
-// $portfolio-primary: mat.define-palette(customPalette.$bright-navy-blue-palette, 700, 700, 900);
-// $portfolio-accent: mat.define-palette(customPalette.$blue-grey-palette, A200, A100, A400);
-// $portfolio-warn: mat.define-palette(mat.$teal-palette, 300);
-
-// $my-primary: mat.define-palette(mat.$indigo-palette, 500);
-// $my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
-
-
-// // Create the theme object. A theme consists of configurations for individual
-// // theming systems such as "color" or "typography".
-// $portfolio-theme-light: mat.define-light-theme((
-//   color: (
-//     primary: $portfolio-primary,
-//     accent: $my-accent,
-//   ),
-//   typography: mat.define-typography-config(),
-//   density: -1,
-// ));
-
-// // @debug $portfolio-theme-light;
-// // // Write over background and foreground with my versions.
-// // $portfolio-theme-light: map.set(
-// //   $portfolio-theme-light,
-// //   color,
-// //   background,
-// //   my.$light-background
-// // );
-
-// // $portfolio-theme-light: map.set(
-// //   $portfolio-theme-light,
-// //   color,
-// //   foreground,
-// //   my.$light-foreground
-// // );
-
-// // // Change the repeated ones after color just in case
-// // $portfolio-theme-light: map.set(
-// //   $portfolio-theme-light,
-// //   background,
-// //   my.$light-background
-// // );
-
-// // $portfolio-theme-light: map.set(
-// //   $portfolio-theme-light,
-// //   foreground,
-// //   my.$light-foreground
-// // );
-
-// $portfolio-theme-dark: mat.define-dark-theme((
-//   color: (
-//     // primary: mat.define-palette(mat.$cyan-palette),
-//     primary: mat.define-palette(customPalette.$crimson-palette, 500, 50, 300),
-//     accent: mat.define-palette(customPalette.$gainsboro-palette, 300, 100, 500),
-//     warn: mat.define-palette(customPalette.$crimson-palette, 700),
-//     ),
-//   typography: mat.define-typography-config(),
-//   density: -1,
-// ));
-
-// // @debug $portfolio-theme-dark;
-
-// // // Write over background and foreground with my versions.
-// // $portfolio-theme-dark: map.set(
-// //   $portfolio-theme-dark,
-// //   color,
-// //   background,
-// //   my.$dark-background
-// // );
-
-// // $portfolio-theme-dark: map.set(
-// //   $portfolio-theme-dark,
-// //   color,
-// //   foreground,
-// //   my.$dark-foreground
-// //   );
-  
-// // // Change the repeated ones after color just in case
-// // $portfolio-theme-dark: map.set(
-// //   $portfolio-theme-dark,
-// //   background,
-// //   my.$dark-background
-// // );
-
-// // $portfolio-theme-dark: map.set(
-// //   $portfolio-theme-dark,
-// //   foreground,
-// //   my.$dark-foreground
-// // );
-
-
-// /* You can add global styles to this file, and also import other style files */
-// // $my-palette: mat.define-palette(mat.$indigo-palette);
-// $my-palette: mat.define-palette(mat.$teal-palette);
-
-// .menu-theme {
-//   background: mat.get-color-from-palette($my-palette, 'darker');
-//   color: mat.get-color-from-palette($my-palette, 'darker-contrast');
-// }
-
-// .theme-light {
-//   @include mat.core-theme($portfolio-theme-light);
-//   @include mat.all-component-colors($portfolio-theme-light);
-//   @include mat.all-component-themes($portfolio-theme-light);
- 
-// }
-
-// .theme-dark {
-//   @include mat.core-theme($portfolio-theme-dark);
-//   @include mat.all-component-colors($portfolio-theme-dark);
-//   @include mat.all-component-themes($portfolio-theme-dark);
-// }
-
-// html, body { height: 100%; }
-
-// body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-
-// src\styles.scss
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-
 @import "@angular/material/theming";
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
 // Be sure that you only ever include this mixin once!
-
 @include mat-core();
 
-// import our custom theme                // ? changed
-@import "./theme.scss";                   // ? changed
-                                          // ? changed
-// import custom component themes         // ? changed
-@import "./custom-component-themes.scss"; // ? changed
+// import our custom theme
+@import "./theme.scss";
+
+// import custom component themes
+@import "./custom-component-themes.scss";
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -309,17 +171,17 @@ h1.sidebar-app-name {
   width: 100%;
 }
 
-.container {
-  display: flow-root;
-  flex-direction: column;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  flex-wrap: wrap;
-  overflow-x: hidden;
-  overflow-y: hidden;
-}
+// .container {
+//   display: flow-root;
+//   flex-direction: column;
+//   padding-left: 30px;
+//   padding-right: 30px;
+//   padding-top: 10px;
+//   padding-bottom: 10px;
+//   flex-wrap: wrap;
+//   overflow-x: hidden;
+//   overflow-y: hidden;
+// }
 
 .breadcrumb-none {
   padding: 8px 16px;
