@@ -1,14 +1,16 @@
-import { Component, HostBinding, Inject, Input } from '@angular/core';
+import { Component, HostBinding, Inject, Input, OnDestroy, OnInit } from '@angular/core';
 import { ThemeService } from 'src/app/services/theme.service';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
+import { HttpService } from 'src/app/services/http.service';
+import { ShareService } from 'src/app/services/share.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   @Input() sidenav: any;
   @Input() drawer: any;
@@ -26,12 +28,17 @@ export class HeaderComponent {
     );
 
   icon: string;
+  subscriptions: Subscription = new Subscription();
+  isLogged!: boolean;
 
   constructor(
     private themeService: ThemeService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private httpService: HttpService,
+    private shareService: ShareService
   ) {
     this.icon = "navigate_before";
+    this.subscriptions.add(this.shareService.isLogged$.subscribe((isLogged: boolean) => this.isLogged = isLogged));
   }
 
   ngOnInit() { }
@@ -42,5 +49,18 @@ export class HeaderComponent {
 
   fullScreen() {
     this.icon = this.icon == "navigate_before" ? "navigate_next" : "navigate_before";
+  }
+
+  logOut(): void {
+    this.subscriptions.add(this.httpService.logOut().subscribe(res => {
+      console.log(res);
+      sessionStorage.removeItem('token');
+      sessionStorage.removeItem('user');
+      this.subscriptions.add(this.shareService.changeStatusLogged(false));
+    }));
+  }
+
+  ngOnDestroy() {
+    this.subscriptions.unsubscribe();
   }
 }

@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { map, catchError } from "rxjs/operators";
 import { Observable, Subscription, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Login } from '../core/interfaces/login';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,9 @@ import { environment } from 'src/environments/environment';
 export class HttpService {
 
   BaseUrl: string = environment.BaseUrl + environment.api;
+  token = sessionStorage.getItem('token');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   /**
   * Obtiene el ultimo usuario
@@ -149,12 +151,38 @@ export class HttpService {
     );
   }
 
-  getLineChartDataSet(url:string): Observable<any> {
+  getLineChartDataSet(url: string): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
-    url = url == 'githubAccounts' ? 'get-github-line-graphyc-accounts': url == 'totalFollowers' ? 'get-github-line-graphyc-followers' : 'get-github-line-graphyc-accounts';
+    url = url == 'githubAccounts' ? 'get-github-line-graphyc-accounts' : url == 'totalFollowers' ? 'get-github-line-graphyc-followers' : 'get-github-line-graphyc-accounts';
     const route = `${this.BaseUrl}/${url}`;
     return this.http.get(route, { headers }).pipe(
       map((data: any) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  login(loginData: Login): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const route = `${this.BaseUrl}/login`;
+    return this.http.post(route, loginData, { headers }).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  logOut(): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const route = `${this.BaseUrl}/log-out`;
+    return this.http.post(route, {}, { headers }).pipe(
+      map((data) => {
         return data;
       }),
       catchError((error) => {

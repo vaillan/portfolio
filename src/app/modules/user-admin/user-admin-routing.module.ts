@@ -4,10 +4,10 @@ import { UserAdminComponent } from './user-admin.component';
 
 const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: UserAdminComponent,
     data: {
-      breadcrumb: 'Login',
+      breadcrumb: 'Sign in',
     }
   }
 ];

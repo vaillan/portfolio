@@ -20,6 +20,10 @@ const routes: Routes = [
       {
         path: 'dahsboard',
         loadChildren: () => import("../modules/dashboard/dashboard.module").then(m => m.DashboardModule)
+      },
+      {
+        path: 'login',
+        loadChildren: () => import("../modules/user-admin/user-admin.module").then(m => m.UserAdminModule)
       }
     ],
     data: {
