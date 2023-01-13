@@ -1,6 +1,12 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+  >
     <mat-toolbar>
       <mat-toolbar-row>
         <span class="text-gradient c-1">V.O.S. ENGINEER</span>
@@ -9,10 +15,35 @@
       </mat-toolbar-row>
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="javascript:void(0)" routerLink="/page/dahsboard" routerLinkActive="active">Data
-        Analitys</a>
-      <a mat-list-item href="javascript:void(0)" routerLink="/page/about" routerLinkActive="active">About</a>
-      <a mat-list-item href="javascript:void(0)" routerLink="/page/projects" routerLinkActive="active">Projects</a>
+      <a
+        mat-list-item
+        *ngIf="isLoggedIn"
+        href="javascript:void(0)"
+        routerLink="/page/admin"
+        routerLinkActive="active"
+        >Admin Dashboard</a
+      >
+      <a
+        mat-list-item
+        href="javascript:void(0)"
+        routerLink="/page/dahsboard"
+        routerLinkActive="active"
+        >Data Analitys</a
+      >
+      <a
+        mat-list-item
+        href="javascript:void(0)"
+        routerLink="/page/about"
+        routerLinkActive="active"
+        >About</a
+      >
+      <a
+        mat-list-item
+        href="javascript:void(0)"
+        routerLink="/page/projects"
+        routerLinkActive="active"
+        >Projects</a
+      >
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

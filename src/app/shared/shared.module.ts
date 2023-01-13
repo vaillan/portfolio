@@ -6,6 +6,7 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
+import { NotauthorizedComponent } from './notauthorized/notauthorized.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     BreadcrumbComponent,
     LineChartComponent,
     BarChartComponent,
+    NotauthorizedComponent,
   ],
   imports: [
     CommonModule,
@@ -24,6 +26,7 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
     BreadcrumbComponent,
     LineChartComponent,
     BarChartComponent,
+    NotauthorizedComponent,
   ]
 })
 export class SharedModule { }

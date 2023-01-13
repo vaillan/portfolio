@@ -1,23 +1,25 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { ShareService } from 'src/app/services/share.service';
-@Component({
-  selector: 'app-user-admin',
-  templateUrl: './user-admin.component.html',
-  styleUrls: ['./user-admin.component.scss']
-})
-export class UserAdminComponent implements OnInit, OnDestroy {
 
+@Component({
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
+})
+export class LoginComponent {
   hide: boolean;
   loginForm: FormGroup = new FormGroup({});
   subscriptions: Subscription = new Subscription();
 
   constructor(
-    private fb: FormBuilder, 
+    private fb: FormBuilder,
     private httpService: HttpService,
-    private shareService: ShareService
+    private shareService: ShareService,
+    private router: Router
   ) {
     this.hide = true;
     this.loginForm = this.fb.group(
@@ -28,19 +30,16 @@ export class UserAdminComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void { }
-
   get f() {
     return this.loginForm.controls;
   }
 
-
   onSubmit(): void {
     this.subscriptions.add(this.httpService.login(this.loginForm.value).subscribe(res => {
-      console.log(res);
       sessionStorage.setItem('token', res.token);
       sessionStorage.setItem('user', JSON.stringify(res.user));
       this.shareService.changeStatusLogged(true);
+      this.router.navigateByUrl('/page/admin');
     }));
   }
 

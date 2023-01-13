@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { HttpService } from 'src/app/services/http.service';
 import { ShareService } from 'src/app/services/share.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -35,7 +36,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
     private httpService: HttpService,
-    private shareService: ShareService
+    private shareService: ShareService,
+    private router: Router
   ) {
     this.icon = "navigate_before";
     this.subscriptions.add(this.shareService.isLogged$.subscribe((isLogged: boolean) => this.isLogged = isLogged));
@@ -53,10 +55,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   logOut(): void {
     this.subscriptions.add(this.httpService.logOut().subscribe(res => {
-      console.log(res);
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('user');
       this.subscriptions.add(this.shareService.changeStatusLogged(false));
+      this.router.navigateByUrl('/page');
     }));
   }
 

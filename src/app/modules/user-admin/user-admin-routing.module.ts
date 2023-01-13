@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UserAdminComponent } from './user-admin.component';
+import { AuthGuard } from 'src/app/guards/auth.guard';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: UserAdminComponent,
+    component: AdminDashboardComponent,
     data: {
-      breadcrumb: 'Sign in',
-    }
+      breadcrumb: 'Admin Dashboard'
+    },
   }
 ];
 
