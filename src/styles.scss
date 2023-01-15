@@ -22,7 +22,7 @@
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 
-@include angular-material-theme($theming-material-components-theme);  // ? changed
+@include angular-material-theme($theming-material-components-theme); // ? changed
 @include custom-components-theme($theming-material-components-theme); // ? changed
 
 // ? added
@@ -46,6 +46,7 @@ html,
 body {
   height: 100%;
 }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -171,18 +172,6 @@ h1.sidebar-app-name {
   width: 100%;
 }
 
-// .container {
-//   display: flow-root;
-//   flex-direction: column;
-//   padding-left: 30px;
-//   padding-right: 30px;
-//   padding-top: 10px;
-//   padding-bottom: 10px;
-//   flex-wrap: wrap;
-//   overflow-x: hidden;
-//   overflow-y: hidden;
-// }
-
 .breadcrumb-none {
   padding: 8px 16px;
   display: inline-block;
@@ -190,14 +179,6 @@ h1.sidebar-app-name {
 
 .img-background {
   background-image: url('assets/img/Header-page.png');
-  background-size: contain;
-  background-position: center;
-  object-fit: cover;
-  background-repeat: no-repeat;
-}
-
-.img-background-2 {
-  background-image: url('assets/img/i-5.png');
   background-size: contain;
   background-position: center;
   object-fit: cover;

@@ -10,7 +10,7 @@ import { ShareService } from 'src/app/services/share.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnDestroy {
   hide: boolean;
   loginForm: FormGroup = new FormGroup({});
   subscriptions: Subscription = new Subscription();
@@ -38,7 +38,8 @@ export class LoginComponent {
     this.subscriptions.add(this.httpService.login(this.loginForm.value).subscribe(res => {
       sessionStorage.setItem('token', res.token);
       sessionStorage.setItem('user', JSON.stringify(res.user));
-      this.shareService.changeStatusLogged(true);
+      this.subscriptions.add(this.shareService.changeStatusLogged(true));
+      this.subscriptions.add(this.shareService.changeCurrentUser(res.user));
       this.router.navigateByUrl('/page/admin');
     }));
   }

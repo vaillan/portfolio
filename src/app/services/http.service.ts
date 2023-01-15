@@ -190,4 +190,44 @@ export class HttpService {
       })
     );
   }
+
+  uploadFile(fileData: any): Observable<any> {
+    const headers = new HttpHeaders();
+    const params = new HttpParams();
+
+    const options = {
+      params: params,
+      reportProgress: true,
+    };
+
+    const route = `${this.BaseUrl}/upload-file`;
+    return this.http.post(route, fileData, options).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
+
+  downloadFile(data:object) {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const params = new HttpParams();
+
+    const options = {
+      params: params,
+      reportProgress: true,
+    };
+
+    const route = `${this.BaseUrl}/download-file`;
+    return this.http.post(route, data, options).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
 }

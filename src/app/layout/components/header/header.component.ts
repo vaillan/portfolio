@@ -58,6 +58,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       sessionStorage.removeItem('token');
       sessionStorage.removeItem('user');
       this.subscriptions.add(this.shareService.changeStatusLogged(false));
+      this.shareService.changeCurrentUser(null);
       this.router.navigateByUrl('/page');
     }));
   }
