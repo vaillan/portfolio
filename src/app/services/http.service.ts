@@ -4,16 +4,15 @@ import { map, catchError } from "rxjs/operators";
 import { Observable, Subscription, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Login } from '../core/interfaces/login';
-
+import { Options } from '../core/const/http-options';
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
 
   BaseUrl: string = environment.BaseUrl + environment.api;
-  token = sessionStorage.getItem('token');
-
-  constructor(private http: HttpClient) {}
+  
+  constructor(private http: HttpClient) { }
 
   /**
   * Obtiene el ultimo usuario
@@ -21,9 +20,9 @@ export class HttpService {
   * @returns Observable
   */
   getLastUser(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/get-last-user`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data) => {
         return data;
       }),
@@ -35,9 +34,9 @@ export class HttpService {
 
   getLocation(location: string): Observable<any> {
     const KEY = "LvXG1ANyn1RSqMitp48ryjsjqLXS5O1k";
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `http://www.mapquestapi.com/geocoding/v1/address?key=${KEY}&location=${location}`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data: any) => {
         return data.results[0].locations[0];
       }),
@@ -48,9 +47,9 @@ export class HttpService {
   }
 
   insertGithubUser(user: any): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/insert-user`;
-    return this.http.post(route, user, { headers }).pipe(
+    return this.http.post(route, user, options).pipe(
       map((data) => {
         return data;
       }),
@@ -87,9 +86,9 @@ export class HttpService {
   }
 
   getUsersGithubStored(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/get-users-github-stored`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data: any) => {
         return data;
       }),
@@ -100,9 +99,9 @@ export class HttpService {
   }
 
   getPagination(url: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${url}`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data: any) => {
         return data;
       }),
@@ -113,9 +112,9 @@ export class HttpService {
   }
 
   createGithubGlobeGraphos(data: Object): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/insert-globe-users-graphos`;
-    return this.http.post(route, data, { headers }).pipe(
+    return this.http.post(route, data, options).pipe(
       map((data) => {
         return data;
       }),
@@ -126,9 +125,9 @@ export class HttpService {
   }
 
   getGithubGlobeUsers(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/get-github-globe-users`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data: any) => {
         return data;
       }),
@@ -139,9 +138,9 @@ export class HttpService {
   }
 
   getGithubGlobeUsersLocation(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/get-github-globe-users-location`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data: any) => {
         return data;
       }),
@@ -152,10 +151,10 @@ export class HttpService {
   }
 
   getLineChartDataSet(url: string): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     url = url == 'githubAccounts' ? 'get-github-line-graphyc-accounts' : url == 'totalFollowers' ? 'get-github-line-graphyc-followers' : 'get-github-line-graphyc-accounts';
     const route = `${this.BaseUrl}/${url}`;
-    return this.http.get(route, { headers }).pipe(
+    return this.http.get(route, options).pipe(
       map((data: any) => {
         return data;
       }),
@@ -166,9 +165,9 @@ export class HttpService {
   }
 
   login(loginData: Login): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/login`;
-    return this.http.post(route, loginData, { headers }).pipe(
+    return this.http.post(route, loginData, options).pipe(
       map((data) => {
         return data;
       }),
@@ -179,9 +178,9 @@ export class HttpService {
   }
 
   logOut(): Observable<any> {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
+    const options = Options;
     const route = `${this.BaseUrl}/log-out`;
-    return this.http.post(route, {}, { headers }).pipe(
+    return this.http.post(route, {}, options).pipe(
       map((data) => {
         return data;
       }),
@@ -192,14 +191,7 @@ export class HttpService {
   }
 
   uploadFile(fileData: any): Observable<any> {
-    const headers = new HttpHeaders();
-    const params = new HttpParams();
-
-    const options = {
-      params: params,
-      reportProgress: true,
-    };
-
+    const options = Options;
     const route = `${this.BaseUrl}/upload-file`;
     return this.http.post(route, fileData, options).pipe(
       map((data) => {
@@ -211,15 +203,8 @@ export class HttpService {
     );
   }
 
-  downloadFile(data:object) {
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-Requested-With': ' XMLHttpRequest' });
-    const params = new HttpParams();
-
-    const options = {
-      params: params,
-      reportProgress: true,
-    };
-
+  downloadFile(data: object) {
+    const options = Options;
     const route = `${this.BaseUrl}/download-file`;
     return this.http.post(route, data, options).pipe(
       map((data) => {

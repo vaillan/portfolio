@@ -12,10 +12,10 @@ import { ShareService } from 'src/app/services/share.service';
 export class DegreeProjectComponent implements OnDestroy {
 
   subscriptions: Subscription = new Subscription();
-  user!:User | null; 
+  user!: User | null;
 
   constructor(
-    private httpService: HttpService, 
+    private httpService: HttpService,
     private shareService: ShareService
   ) {
     this.subscriptions.add(this.shareService.currentUser$.subscribe({
@@ -23,21 +23,21 @@ export class DegreeProjectComponent implements OnDestroy {
         this.user = user;
       },
       error: (error) => {
-        console.log(error)
+        console.error(error)
       }
     }));
   }
 
   downloadFile(): void {
     console.log(this.user);
-    const data = {user_id: this.user?.id}
+    const data = { user_id: this.user?.id ? this.user?.id : 1 };
     this.subscriptions.add(this.httpService.downloadFile(data).subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         const file = res.file;
         window.open(file.file_url, '_blank');
       },
       error: (error) => {
-        console.log(error);
+        console.error(error);
       }
     }));
   }
