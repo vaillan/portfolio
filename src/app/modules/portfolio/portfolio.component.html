@@ -26,7 +26,7 @@
           </div>
           <div class="col-12_sm-12 grid-center">
             <div class="col_sm-12">
-              <h2>Work <span class="text-gradient c-1">information</span></h2>
+              <p class="font-semibold text-2xl">Work <span class="text-gradient c-1">information</span></p>
               <ul>
                 <li>
                   <p style="font-size: 1.25rem;">
@@ -43,7 +43,7 @@
               </ul>
             </div>
             <div class="col_sm-12">
-              <h2>Experience</h2>
+              <p class="font-semibold text-2xl">Experience</p>
               <p style="font-size: 1.25rem;">
                 Full Stack Developer Engineer
                 <br />
@@ -178,65 +178,63 @@
         <h3 class="custom-display-3">My</h3>
         <h3 class="custom-display-3 text-gradient c-1">Skills</h3>
       </div>
-      <mat-card class="card">
-        <mat-card-content>
-          <div class="grid">
-            <section class="col-4_sm-12">
-              <h3>Front End</h3>
-              <div class="grid">
-                <div class="col-12">
-                  <h4>HTML {{.8 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+      <div class="mat-elevation-z4">
+        <mat-card class="card">
+          <mat-card-content>
+            <div class="grid">
+              <section class="col-4_sm-12">
+                <h3>Front End</h3>
+                <div class="grid">
+                  <div class="col-12">
+                    <h4>HTML / CSS {{.7 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+                  </div>
+                  <div class="col-12">
+                    <h4>Javascript {{.75 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="75"></mat-progress-bar>
+                  </div>
+                  <div class="col-12">
+                    <h4>Angular {{.75 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="75"></mat-progress-bar>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <h4>CSS {{.7 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+              </section>
+  
+              <section class="col-4_sm-12">
+                <h3>Back End</h3>
+                <div class="grid">
+                  <div class="col-12">
+                    <h4>PHP {{.6 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
+                  </div>
+                  <div class="col-12">
+                    <h4>Laravel {{.7 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+                  </div>
+                  <div class="col-12">
+                    <h4>Python {{.5 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <h4>Javascript {{.7 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+              </section>
+  
+              <section class="col-4_sm-12">
+                <h3>Database</h3>
+                <div class="grid">
+                  <div class="col-12">
+                    <h4>MySQL {{.5 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+                  </div>
+                  <div class="col-12">
+                    <h4>MariaDB {{.5 | percent}}</h4>
+                    <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
+                  </div>
                 </div>
-                <div class="col-12">
-                  <h4>Angular {{.7 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
-                </div>
-              </div>
-            </section>
-
-            <section class="col-4_sm-12">
-              <h3>Back End</h3>
-              <div class="grid">
-                <div class="col-12">
-                  <h4>PHP {{.6 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
-                </div>
-                <div class="col-12">
-                  <h4>Laravel {{.7 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
-                </div>
-                <div class="col-12">
-                  <h4>Python {{.5 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
-                </div>
-              </div>
-            </section>
-
-            <section class="col-4_sm-12">
-              <h3>Database</h3>
-              <div class="grid">
-                <div class="col-12">
-                  <h4>MySQL {{.5 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
-                </div>
-                <div class="col-12">
-                  <h4>MariaDB {{.5 | percent}}</h4>
-                  <mat-progress-bar mode="determinate" value="50"></mat-progress-bar>
-                </div>
-              </div>
-            </section>
-          </div>
-        </mat-card-content>
-      </mat-card>
+              </section>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
     </div>
   </div>
 </div>

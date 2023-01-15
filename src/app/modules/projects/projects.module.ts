@@ -9,13 +9,15 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { ThreeGlobeProjectComponent } from './three-globe-project/three-globe-project.component';
 import { DegreeProjectComponent } from './degree-project/degree-project.component';
 import { DataAnalitysProjectComponent } from './data-analitys-project/data-analitys-project.component';
+import { PortfolioProjectComponent } from './portfolio-project/portfolio-project.component';
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     ThreeGlobeProjectComponent,
     DegreeProjectComponent,
-    DataAnalitysProjectComponent
+    DataAnalitysProjectComponent,
+    PortfolioProjectComponent
   ],
   imports: [
     CommonModule,

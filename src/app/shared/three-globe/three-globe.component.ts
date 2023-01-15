@@ -163,7 +163,7 @@ export class ThreeGlobeComponent {
         .pointAltitude(0.07)
         .pointRadius(0.1);
       this.isLoadingResults = false;
-    }, 1000);
+    });
 
     const globeMaterial: any = sphere.globeMaterial();
     globeMaterial.color = new THREE.Color(0x3a228a);
