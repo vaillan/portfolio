@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DegreeProjectComponent } from './degree-project/degree-project.component';
+import { PortfolioProjectComponent } from './portfolio-project/portfolio-project.component';
 import { ProjectsComponent } from './projects.component';
 import { ThreeGlobeProjectComponent } from './three-globe-project/three-globe-project.component';
 
@@ -21,6 +22,13 @@ const routes: Routes = [
     component: DegreeProjectComponent,
     data: {
       breadcrumb: 'Remote controller system on a net of sensores'
+    }
+  },
+  {
+    path: 'portfolio',
+    component: PortfolioProjectComponent,
+    data: {
+      breadcrumb: 'Portfolio'
     }
   }
 ];

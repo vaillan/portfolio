@@ -1,1 +1,13 @@
-<p>bar-chart works!</p>
+<div style="display: block">
+  <div class="flex flex-wrap">
+    <canvas
+      baseChart
+      [data]="barChartData"
+      [options]="barChartOptions"
+      [plugins]="barChartPlugins"
+      [legend]="barChartLegend"
+      [type]="'bar'"
+    >
+    </canvas>
+  </div>
+</div>

@@ -215,4 +215,16 @@ export class HttpService {
       })
     );
   }
+
+  getBarChartGraphycRepos(): Observable<any> {
+    const route = `${this.BaseUrl}/get-github-chart-graphyc-repos`;
+    return this.http.get(route, Options).pipe(
+      map((data: any) => {
+        return data;
+      }),
+      catchError((error) => {
+        return throwError(() => error);
+      })
+    );
+  }
 }

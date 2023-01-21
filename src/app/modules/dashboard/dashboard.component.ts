@@ -40,6 +40,12 @@ export class DashboardComponent {
     labels: [],
     datasets: []
   };
+
+  barChartData: ChartConfiguration<'bar'>['data'] = {
+    labels: [],
+    datasets: []
+  };
+
   constructor(private httpService: HttpService) {
     this.columns = ['name', 'type', 'company', 'location', 'country', 'followers', 'public_gists', 'public_repos'];
     this.analyzeButton = this.checkedA;
@@ -61,6 +67,11 @@ export class DashboardComponent {
       this.linksPagination = res.users.links;
     });
 
+    this.lineChart();
+    this.barChart();
+  }
+
+  private lineChart() {
     this.httpService.getLineChartDataSet('githubAccounts').subscribe({
       next: (res: any) => {
         const labels = Object.keys(res.data);
@@ -78,11 +89,11 @@ export class DashboardComponent {
               backgroundColor: 'rgba(132, 140, 207, 1)'
             }
           ]
-        }
+        };
 
       },
       error: (error) => {
-        console.error(error)
+        console.error(error);
       }
     });
   }
@@ -196,4 +207,27 @@ export class DashboardComponent {
     );
   }
 
+  barChart(): void {
+    this.httpService.getBarChartGraphycRepos().subscribe({
+      next: (res:any) => {
+        const labels = Object.keys(res.data);
+        const data: any = Object.values(res.data);
+
+        this.barChartData = {
+          labels: labels,
+          datasets: [
+            {
+              data: data,
+              label: 'Github Repos',
+              borderColor: 'rgba(82, 78, 183, 1)',
+              backgroundColor: 'rgba(132, 140, 207, 1)'
+            }
+          ]
+        }
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 }
