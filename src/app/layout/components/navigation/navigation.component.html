@@ -3,6 +3,7 @@
     #drawer
     class="sidenav"
     fixedInViewport
+    [class.mat-elevation-z4]="true"
     [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
     [mode]="(isHandset$ | async) ? 'over' : 'side'"
     [opened]="(isHandset$ | async) === false"
@@ -21,29 +22,37 @@
         href="javascript:void(0)"
         routerLink="/page/admin"
         routerLinkActive="active"
-        >Admin Dashboard</a
       >
+        <mat-icon matListItemIcon>dashboard</mat-icon>
+        <p matListItemTitle>Admin Dashboard</p>
+      </a>
       <a
         mat-list-item
         href="javascript:void(0)"
         routerLink="/page/dahsboard"
         routerLinkActive="active"
-        >Data Analitys</a
       >
+        <mat-icon matListItemIcon>data_exploration</mat-icon>
+        <p matListItemTitle>Data Analitys</p>
+      </a>
       <a
         mat-list-item
         href="javascript:void(0)"
         routerLink="/page/about"
         routerLinkActive="active"
-        >About</a
       >
+        <mat-icon matListItemIcon>badge</mat-icon>
+        <p matListItemTitle>About</p>
+      </a>
       <a
         mat-list-item
         href="javascript:void(0)"
         routerLink="/page/projects"
         routerLinkActive="active"
-        >Projects</a
       >
+        <mat-icon matListItemIcon>construction</mat-icon>
+        <p matListItemTitle>Projects</p>
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

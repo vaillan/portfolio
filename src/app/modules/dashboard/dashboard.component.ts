@@ -4,6 +4,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ThemePalette } from '@angular/material/core';
 import { ChartConfiguration } from "chart.js";
+import { ShareService } from 'src/app/services/share.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -46,7 +47,7 @@ export class DashboardComponent {
     datasets: []
   };
 
-  constructor(private httpService: HttpService) {
+  constructor(private httpService: HttpService, private shareService: ShareService) {
     this.columns = ['name', 'type', 'company', 'location', 'country', 'followers', 'public_gists', 'public_repos'];
     this.analyzeButton = this.checkedA;
     this.globeGraphosButton = this.checkedB;
@@ -59,13 +60,16 @@ export class DashboardComponent {
     this.pageSize = 0;
 
     this.httpService.getUsersGithubStored().subscribe(res => {
-      console.log(res);
       this.usersDataSource = new MatTableDataSource(res.users.data);
       this.pageSize = res.users.per_page;
       this.length = res.users.total;
       this.pageIndex = res.users.current_page - 1;
       this.linksPagination = res.users.links;
     });
+
+    this.shareService.isLogged$.subscribe(isLogged => {
+      this.disabled = isLogged ? false: true;
+    })
 
     this.lineChart();
     this.barChart();
@@ -209,7 +213,7 @@ export class DashboardComponent {
 
   barChart(): void {
     this.httpService.getBarChartGraphycRepos().subscribe({
-      next: (res:any) => {
+      next: (res: any) => {
         const labels = Object.keys(res.data);
         const data: any = Object.values(res.data);
 
