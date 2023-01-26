@@ -58,6 +58,9 @@ import {
   faAngular,
   faPython,
   faJs,
+  faWhatsapp,
+  faWhatsappSquare,
+  faSquareWhatsapp,
 } from '@fortawesome/free-brands-svg-icons';
 import { faDatabase, faUserGroup } from '@fortawesome/free-solid-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
@@ -134,7 +137,8 @@ export class AngularMaterialModule {
       faJs,
       faDatabase,
       faUserGroup,
-      faUser
+      faUser,
+      faSquareWhatsapp
     );
   }
 }
